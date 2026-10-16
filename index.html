@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- GERADO de versoes/v1/index.html por trocar-versao.ps1. Nao edite aqui: edite a versao e rode o script de novo. -->
+<!-- GERADO de versoes/v2/index.html por trocar-versao.ps1. Nao edite aqui: edite a versao e rode o script de novo. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -41,7 +41,7 @@ if (/^\d{6,}$/.test(PIXEL_ID)) {
 
 <!-- Microsoft Clarity (projeto Enderup) -->
 <script>
-var VERSAO_PAGINA = 'v1';
+var VERSAO_PAGINA = 'v2';
 var CLARITY_ID = 'yyb84k7y7l';
 if (/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) {
   (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -59,29 +59,33 @@ if (/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) {
 :root{
   --pagina:#0B0B0D;--painel:#101012;--creme:#F4F1EA;
   --ambar:#F5B83D;--ambar-claro:#F9CB64;--ambar-fundo:#E29C26;--ambar-texto:#8A5D00;
-  --claro:#F4F1EA;--escuro:#0B0B0D;--btn-txt:#1A1200;--erro:#B42318;
+  --claro:#F4F1EA;--escuro:#0B0B0D;--btn-txt:#1A1200;--erro:#B42318;--borda:rgba(11,11,13,.15);
   --bebas:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
   --inter:Inter,'Inter reserva',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --grade:48px;--raio:28px;--pad-y:22px;--pad-x:16px;--pad-b:30px;
-  --pi:max(var(--pad-x),calc((100cqw - 1112px) / 2))
+  --grade:48px;--raio:26px;--pad-y:18px;--pad-x:16px;--pad-b:30px;
+  --pi:max(var(--pad-x),calc((100cqw - 1112px) / 2));
+  --curva:cubic-bezier(.2,.8,.2,1)
 }
-@media (min-width:900px){:root{--grade:64px;--raio:40px;--pad-y:56px;--pad-x:64px;--pad-b:72px}}
+@media (min-width:900px){:root{--grade:64px;--raio:36px;--pad-y:48px;--pad-x:64px;--pad-b:80px}}
 
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{background:var(--pagina);color:var(--claro);font:400 15px/1.6 var(--inter);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.foco{background:var(--creme)}
 @media (min-width:900px){body{font-size:16px}}
 img,svg{display:block;max-width:100%}
 img{height:auto}
 a{color:inherit}
 ol,ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--claro);outline-offset:3px;border-radius:6px}
-.creme :focus-visible,.ficha :focus-visible{outline-color:var(--escuro)}
-.ic{width:20px;height:20px;flex:none}
+.creme :focus-visible,.inicio :focus-visible,#foco :focus-visible{outline-color:var(--escuro)}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ic-cheio{width:24px;height:24px;flex:none;fill:currentColor}
 .pagina{container-type:inline-size}
 
-/* Painéis com grade e brilho, iguais aos da página de referência */
+/* Painéis com grade e brilho (mesma linguagem da página de referência) */
 .painel{position:relative;isolation:isolate;overflow:hidden;padding:var(--pad-y) var(--pi) var(--pad-b);color:var(--cor);
   background:
     linear-gradient(var(--gcor) 1px,transparent 1px) var(--pi) 0/var(--grade) var(--grade),
@@ -91,96 +95,184 @@ ol,ul{list-style:none}
     var(--fundo)}
 .escuro{--fundo:var(--painel);--cor:var(--claro);--suave:#8F8B83;--linha:rgba(244,241,234,.09);--gcor:rgba(244,241,234,.035);--b1:rgba(245,184,61,.14);--b2:rgba(196,92,18,.30)}
 .creme{--fundo:var(--creme);--cor:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);--gcor:rgba(11,11,13,.045)}
-.vitrine{--p1:100% 100%;--p2:0% 0%}
-.cruz{position:absolute;width:11px;height:11px;opacity:.28;pointer-events:none;z-index:-1;top:calc(var(--grade) * var(--y) - 5px);left:calc(var(--pi) + var(--grade) * var(--x) - 5px)}
-@media (min-width:900px){.cruz{top:calc(var(--grade) * var(--yd) - 5px);left:calc(var(--pi) + var(--grade) * var(--xd) - 5px)}}
-.cruz::before,.cruz::after{content:"";position:absolute;background:var(--cor)}
-.cruz::before{left:5px;top:0;width:1px;height:11px}
-.cruz::after{top:5px;left:0;width:11px;height:1px}
+.secao{padding-top:44px;padding-bottom:48px}
+@media (min-width:900px){.secao{padding-top:88px;padding-bottom:96px}}
 
 /* Tipografia */
 .etiqueta{display:flex;align-items:center;gap:9px;font:500 11.5px/1.35 var(--inter);letter-spacing:.09em;text-transform:uppercase}
 .q{flex:none;width:9px;height:9px;border-radius:2px;background:var(--ambar)}
 .t1,.t2,.t3{font-family:var(--bebas);font-weight:400;text-transform:uppercase;letter-spacing:.004em}
-.t1{font-size:clamp(3.1rem,1.4rem + 7.2vw,6.25rem);line-height:.93}
-.t2{font-size:clamp(2.5rem,1.5rem + 4.6vw,4.5rem);line-height:.95;margin-top:12px}
-.t3{font-size:clamp(2.3rem,1.6rem + 3vw,3.5rem);line-height:.95}
+.t1{font-size:clamp(2.75rem,1.2rem + 7.2vw,6rem);line-height:.93}
+.t2{font-size:clamp(2.35rem,1.4rem + 4.4vw,4.25rem);line-height:.95;margin-top:12px}
+.t3{font-size:clamp(2.4rem,1.7rem + 3vw,3.5rem);line-height:.95}
 .escuro .d{color:var(--ambar)}
-.creme .d,.ficha .d{background:linear-gradient(var(--ambar),var(--ambar)) no-repeat 0 62%/100% 76%;color:var(--escuro);padding:0 .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.lead{font-size:16px;line-height:1.55;max-width:36ch}
+.creme .d,.inicio .d,#foco .d{background:linear-gradient(var(--ambar),var(--ambar)) no-repeat 0 62%/100% 76%;color:var(--escuro);padding:0 .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lead{font-size:15.5px;line-height:1.55;max-width:38ch}
 .lead .suave{color:var(--suave)}
-.nota{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4;color:var(--suave)}
-.nota::before{content:"";flex:none;width:10px;height:10px;border-radius:2px;background:var(--ambar);margin-top:.25em}
-@media (min-width:900px){.etiqueta{font-size:12.5px}.lead{font-size:18px}}
+.texto{color:var(--suave);max-width:46ch;font-size:15.5px;line-height:1.6}
+.nota{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;color:var(--suave)}
+.nota::before{content:"";flex:none;width:10px;height:10px;border-radius:2px;background:var(--ambar);margin-top:.28em}
+@media (min-width:900px){.etiqueta{font-size:12.5px}.lead{font-size:18px}.texto{font-size:17px}}
 
 /* Botão âmbar da referência */
-.botao{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:60px;padding:0 22px;border:0;border-radius:18px;cursor:pointer;text-align:center;text-decoration:none;
+.botao{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;padding:0 22px;border:0;border-radius:18px;cursor:pointer;text-align:center;text-decoration:none;
   font:600 16.5px/1.2 var(--inter);color:var(--btn-txt);
   background:radial-gradient(130% 140% at 0% 100%,rgba(255,255,255,.26),transparent 46%),linear-gradient(100deg,var(--ambar-claro),var(--ambar-fundo));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 30px -12px var(--ambar-fundo);transition:transform .12s,filter .12s,opacity .12s}
-.botao:active{transform:translateY(1px);filter:brightness(.95)}
-.botao[disabled]{opacity:.75;cursor:progress}
-.botao .ic{width:24px;height:24px}
-@media (min-width:900px){.botao{min-height:64px;border-radius:20px}}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 30px -12px var(--ambar-fundo);transition:transform .1s,filter .1s,opacity .1s}
+.botao:active{transform:translateY(1px) scale(.99);filter:brightness(.95)}
+.botao[disabled]{opacity:.7;cursor:progress}
+@media (min-width:900px){.botao{min-height:62px;border-radius:20px}}
 
-/* Topo */
-.cabecalho{display:flex;align-items:center;min-height:64px;margin:calc(var(--pad-y) * -1) calc(var(--pi) * -1) 22px;padding:0 var(--pi);border-bottom:1px solid var(--linha);background:rgba(245,184,61,.045)}
-.logo{height:22px;width:auto;aspect-ratio:479.4/93.2}
-.topo .t1{margin:0 0 16px}
+/* ---------- Entrada ---------- */
+.logo{height:21px;width:auto;aspect-ratio:479.4/93.2}
+/* A primeira tela é a pergunta 1, com a mesma cara das outras etapas */
+.inicio{color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);scroll-margin-top:0;
+  background:
+    linear-gradient(rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    linear-gradient(90deg,rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    radial-gradient(90% 40% at 100% 100%,rgba(245,184,61,.12),transparent 70%),
+    var(--creme)}
+.inicio .barra{position:relative}
+.inicio-palco{display:grid;gap:22px;max-width:600px;margin:0 auto;padding:20px 16px 26px}
+.inicio .t1{font-size:clamp(2.15rem,1.3rem + 4.2vw,4.25rem);line-height:.94}
+.inicio .lead{margin-top:10px;font-size:15px}
+.inicio-pergunta{gap:12px}
+.inicio-pergunta .q-titulo{font-size:24px}
+.rolar{justify-self:center;margin-top:4px;padding:10px;font:600 14px/1.2 var(--inter);color:var(--suave);text-decoration:underline;text-underline-offset:3px}
 @media (min-width:900px){
-  .cabecalho{min-height:78px;margin-bottom:56px}
-  .logo{height:26px}
-  .topo-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:64px;align-items:start}
-  .topo-texto{padding-top:12px}
-  .topo .t1{margin-bottom:28px}
+  .inicio-palco{max-width:1112px;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:72px;align-items:center;padding:64px 16px 72px}
+  .inicio .lead{font-size:18px;margin-top:22px}
+  .inicio-pergunta .q-titulo{font-size:28px}
 }
+.kicker{font-size:13.5px;line-height:1.4;color:var(--suave)}
 
-/* Cartão do formulário */
-.anel{margin-top:24px;padding:5px;border-radius:calc(var(--raio) + 6px);background:rgba(245,184,61,.08);border:1px solid rgba(245,184,61,.35);scroll-margin-top:12px}
-.ficha{border-radius:var(--raio);padding:22px 16px 20px;background:var(--creme);color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11)}
-@media (min-width:900px){.anel{margin-top:0}.ficha{padding:32px 30px 28px}}
-.campo{display:grid;gap:7px;margin-bottom:16px}
-.campo label{font:600 12.5px/1.3 var(--inter);letter-spacing:.06em;text-transform:uppercase}
-.campo input{width:100%;height:54px;padding:0 14px;text-overflow:ellipsis;border-radius:14px;border:1.5px solid rgba(11,11,13,.16);background:#fff;color:var(--escuro);
-  font:400 16px/1.2 var(--inter);transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
-.campo input::placeholder{color:#8F8B83;opacity:1;font-size:14px}
-.campo input:focus{outline:none;border-color:var(--ambar-fundo);box-shadow:0 0 0 4px rgba(245,184,61,.28)}
-.campo input[aria-invalid="true"]{border-color:var(--erro)}
-.campo input[aria-invalid="true"]:focus{box-shadow:0 0 0 4px rgba(180,35,24,.16)}
+/* ---------- Peças do quiz ---------- */
+.progresso{height:6px;border-radius:6px;background:rgba(11,11,13,.1);overflow:hidden}
+.progresso>span{display:block;height:100%;width:20%;border-radius:inherit;background:linear-gradient(90deg,var(--ambar-claro),var(--ambar-fundo));transition:width .45s var(--curva)}
+.pergunta{display:grid;gap:12px}
+.q-titulo{display:block;font:700 21px/1.25 var(--inter);letter-spacing:-.015em;color:var(--escuro);outline:none}
+.q-dica{font-size:14.5px;line-height:1.45;color:var(--suave)}
+.campo-q{width:100%;height:56px;padding:0 14px;border-radius:14px;border:1.5px solid var(--borda);background:#fff;color:var(--escuro);
+  font:400 17px/1.2 var(--inter);text-overflow:ellipsis;transition:border-color .1s,box-shadow .1s;-webkit-appearance:none;appearance:none}
+.campo-q::placeholder{color:#8F8B83;opacity:1;font-size:15px}
+.campo-q:focus{outline:none;border-color:var(--ambar-fundo);box-shadow:0 0 0 4px rgba(245,184,61,.28)}
+.campo-q[aria-invalid="true"]{border-color:var(--erro)}
+.rotulo{display:block;font:600 12.5px/1.3 var(--inter);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
 .erro{font-size:13.5px;line-height:1.35;color:var(--erro)}
 .erro:empty{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid var(--borda);font:600 14.5px/1.2 var(--inter);color:var(--escuro);transition:background .1s,border-color .1s,transform .1s}
+.chip:active{transform:scale(.96)}
+.chips.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chips.grade .chip{width:100%;min-height:54px;padding:8px 14px;border-radius:14px;text-align:left;font-size:15px;line-height:1.25}
+.chip[aria-selected="true"]{background:var(--ambar);border-color:var(--ambar)}
+.opcoes{display:grid;gap:10px}
+.opcao{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:11px 14px;border-radius:16px;background:#fff;border:1.5px solid var(--borda);text-align:left;font:600 16px/1.3 var(--inter);color:var(--escuro);transition:background .1s,border-color .1s,transform .1s}
+.opcao:active{transform:scale(.985)}
+.opcao .ic-caixa{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(245,184,61,.18);color:var(--ambar-texto);flex:none}
+.opcao .ic-caixa .ic{width:20px;height:20px}
+.opcao .ic-caixa .ic-cheio{width:20px;height:20px}
+.marca-sel{margin-left:auto;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--borda);display:grid;place-items:center;flex:none;color:var(--ambar)}
+.marca-sel .ic{width:14px;height:14px;stroke-width:3;opacity:0}
+.opcao[aria-pressed="true"]{background:var(--ambar);border-color:var(--ambar)}
+.opcao[aria-pressed="true"] .ic-caixa{background:rgba(11,11,13,.1);color:var(--escuro)}
+.opcao[aria-pressed="true"] .marca-sel{background:var(--escuro);border-color:var(--escuro)}
+.opcao[aria-pressed="true"] .marca-sel .ic{opacity:1}
+.continuar{margin-top:2px}
+.botao-sec{display:flex;align-items:center;justify-content:center;width:100%;min-height:48px;font:600 15px/1.2 var(--inter);color:var(--escuro);text-decoration:underline;text-underline-offset:3px}
+.com-arroba{position:relative}
+.com-arroba>span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font:600 17px/1 var(--inter);color:#8F8B83;pointer-events:none}
+.com-arroba .campo-q{padding-left:34px}
+.com-arroba.sem-arroba>span{display:none}
+.com-arroba.sem-arroba .campo-q{padding-left:14px}
 .isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.enviar{margin-top:6px}
-.ficha .nota{margin-top:14px}
-.consentimento{margin-top:12px;font-size:12.5px;line-height:1.45;color:var(--suave)}
-.consentimento a{color:var(--escuro);text-underline-offset:2px}
 
-/* Tela depois do envio */
-.pronto{display:grid;gap:14px}
-.pronto h2{outline:none}
-.pronto p{font-size:16px;line-height:1.5;text-wrap:pretty}
-.pronto .botao{margin-top:6px;min-height:64px;font-size:17px}
-.pronto .nota{margin-top:2px}
-
-/* Como funciona: compacto, entre a oferta e o formulário */
-.como{margin-top:22px}
-.passos{margin-top:10px}
-.passos li{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:baseline;padding:9px 0;border-bottom:1px solid var(--linha);font-size:14.5px;line-height:1.4}
-.passos li:first-child{border-top:1px solid var(--linha)}
-.passos .n{font:500 12.5px/1.4 var(--inter);color:var(--ambar)}
+/* ---------- Modo foco (uma pergunta por tela) ---------- */
+#foco{min-height:100vh;min-height:100dvh;color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);
+  background:
+    linear-gradient(rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    linear-gradient(90deg,rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    radial-gradient(90% 40% at 100% 100%,rgba(245,184,61,.12),transparent 70%),
+    var(--creme)}
+.logo-barra{height:19px;margin-left:10px}
+.barra{position:sticky;top:0;z-index:20;background:var(--painel);color:var(--claro)}
+.barra-linha{display:flex;align-items:center;justify-content:space-between;gap:12px;height:56px;max-width:632px;margin:0 auto;padding:0 16px 0 6px}
+.voltar{display:flex;align-items:center;gap:2px;min-height:44px;padding:0 10px 0 6px;border-radius:10px;font:600 15px/1 var(--inter);color:var(--claro)}
+.voltar .ic{width:22px;height:22px}
+.contador{font:500 12px/1 var(--inter);letter-spacing:.07em;text-transform:uppercase;color:#C9C5BD}
+.barra .progresso{height:4px;border-radius:0;background:rgba(244,241,234,.12)}
+.barra .progresso>span{border-radius:0}
+.palco{position:relative;max-width:600px;margin:0 auto;padding:26px 16px 48px}
+.tela{display:grid;gap:14px}
+.tela .q-titulo{font-size:24px}
+.tela.saindo{position:absolute;left:16px;right:16px;top:26px;pointer-events:none;animation:sai .14s ease-in both}
+.tela.entra-frente{animation:entraFrente .26s var(--curva) both}
+.tela.entra-tras{animation:entraTras .26s var(--curva) both}
+@keyframes entraFrente{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes entraTras{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes sai{to{opacity:0}}
 @media (min-width:900px){
-  .como{margin-top:40px;max-width:480px}
-  .passos{margin-top:14px}
-  .passos li{font-size:16px;padding:13px 0;grid-template-columns:44px minmax(0,1fr)}
+  .palco{padding:56px 16px 72px}
+  .tela .q-titulo{font-size:30px}
+  .tela.saindo{top:56px}
 }
+.depois{display:grid;gap:9px;padding:14px;border-radius:16px;background:rgba(11,11,13,.045);border:1px solid var(--linha)}
+.depois li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;font-size:15px;line-height:1.4}
+.depois .n{width:24px;height:24px;border-radius:50%;background:var(--escuro);color:var(--ambar);display:grid;place-items:center;font:700 12px/1 var(--inter)}
+.campos{display:grid;gap:14px}
+.campo-c .q-dica{margin-top:6px;font-size:13.5px}
+.consentimento{font-size:12.5px;line-height:1.45;color:var(--suave)}
+.consentimento a{color:var(--escuro);text-underline-offset:2px}
+.pronto-tela{gap:16px}
+.pronto-tela p{font-size:16.5px;line-height:1.5;text-wrap:pretty}
+.pronto-tela .botao{min-height:64px;font-size:17px;margin-top:4px}
 
-/* Faixa de prova: os três sites em moldura de celular */
-.celulares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+/* ---------- Seções para quem rola a página ---------- */
+.porque-lista{display:grid;gap:10px;margin-top:22px}
+.porque-lista li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center;padding:14px;border-radius:18px;background:#fff;border:1px solid var(--linha);font-size:15.5px;line-height:1.45}
+.ic-caixa{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(245,184,61,.16);color:var(--ambar-texto)}
+.ic-caixa .ic{width:22px;height:22px}
+.escuro .ic-caixa{color:var(--ambar)}
+.passos{margin-top:22px}
+.passos li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;padding:15px 0;border-bottom:1px solid var(--linha);font-size:16px;line-height:1.45}
+.passos li:first-child{border-top:1px solid var(--linha)}
+.passos .n{font:500 13px/1.45 var(--inter);color:var(--ambar)}
+.celulares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px}
 .celular{border-radius:16px;border:3px solid #1B1B1F;background:#1B1B1F;overflow:hidden;box-shadow:0 18px 36px -16px rgba(11,11,13,.55)}
 .celular img{width:100%;aspect-ratio:300/649;object-fit:cover;object-position:top}
 .legenda{margin-top:10px;font:500 10.5px/1.3 var(--inter);letter-spacing:.07em;text-transform:uppercase;color:var(--suave);text-align:center}
+.quem{display:grid;gap:22px;margin-top:22px}
+.quem img{width:100%;border-radius:22px;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--linha)}
+.quem p{font-size:16px;line-height:1.6;color:var(--suave)}
+.quem b{color:var(--cor);font-weight:600}
+.perguntas{display:grid;gap:10px;margin-top:22px}
+.duvida{border:1px solid var(--linha);border-radius:18px;transition:background .15s}
+.duvida[open]{background:#fff}
+.escuro .duvida[open]{background:rgba(244,241,234,.05)}
+.duvida summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 18px;gap:12px;align-items:center;padding:17px 16px;font:600 15.5px/1.35 var(--inter)}
+.duvida summary::-webkit-details-marker{display:none}
+.sinal{position:relative;width:14px;height:14px;justify-self:end}
+.sinal::before,.sinal::after{content:"";position:absolute;background:currentColor;border-radius:1px}
+.sinal::before{left:0;top:6px;width:14px;height:2px}
+.sinal::after{left:6px;top:0;width:2px;height:14px;transition:transform .15s}
+.duvida[open] .sinal::after{transform:scaleY(0)}
+.duvida p{padding:0 16px 18px;color:var(--suave);font-size:15px;line-height:1.6}
+.chamada{text-align:center;display:grid;justify-items:center;gap:16px}
+.chamada .botao{max-width:420px}
 @media (min-width:600px){.celulares{gap:20px;max-width:640px}.celular{border-radius:22px;border-width:4px}.legenda{font-size:12px}}
-@media (min-width:900px){.prova{text-align:center}.celulares{max-width:860px;margin:44px auto 0;gap:40px}.legenda{margin-top:14px;font-size:12.5px}}
+@media (min-width:900px){
+  .porque-lista{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+  .porque-lista li{grid-template-columns:1fr;align-items:start;padding:24px;font-size:16.5px}
+  .passos{max-width:760px;margin-top:36px}
+  .passos li{font-size:18px;padding:20px 0}
+  .celulares{max-width:860px;gap:40px;margin:44px auto 0}
+  .vitrine{text-align:center}
+  .quem{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:center;margin-top:40px}
+  .quem p{font-size:18px}
+  .perguntas{max-width:820px;margin-top:36px}
+  .duvida summary{padding:22px 26px;font-size:17px}
+  .duvida p{padding:0 26px 24px;font-size:16px}
+}
 
 /* Rodapé mínimo */
 .rodape{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:28px var(--pi) 108px;border-top:1px solid rgba(244,241,234,.06);font-size:13px;color:#8F8B83}
@@ -188,103 +280,133 @@ ol,ul{list-style:none}
 .rodape a{text-underline-offset:2px}
 @media (min-width:900px){.rodape{padding-bottom:32px}}
 
-/* Botão fixo do celular */
+/* Botão fixo do celular (só na entrada) */
 .fixo{position:fixed;left:12px;right:12px;width:auto;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;box-shadow:0 14px 34px -10px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .25s,opacity .25s}
 .fixo.escondido{transform:translateY(140%);opacity:0;pointer-events:none}
+body.foco .fixo{display:none}
 @media (min-width:900px){.fixo{display:none}}
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fixo{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tela.entra-frente,.tela.entra-tras{animation:aparece .12s linear both}
+  .tela.saindo{animation:sai .08s linear both}
+  .progresso>span,.fixo{transition:none}
+  @keyframes aparece{from{opacity:0}to{opacity:1}}
+}
 </style>
 </head>
 
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="logo" viewBox="0 0 479.4 93.2"><g transform="scale(1.32273)"><rect x="0" y="15" width="40" height="40" fill="#F4F1EA"/><path d="M29 0H55V24H45V10H29Z" fill="#F5B83D"/></g><g transform="translate(90.75 0)"><path fill="#F4F1EA" d="M27.5 73.8Q19 73.8 12.8 70.4Q6.6 67 3.3 60.7Q0 54.4 0 45.7Q0 37.2 3.3 30.9Q6.6 24.6 12.7 21Q18.7 17.5 26.9 17.5Q32.7 17.5 37.5 19.3Q42.3 21.1 45.8 24.6Q49.4 28.2 51.3 33.4Q53.2 38.5 53.2 45.3V49.6H6V39.7H45.1L37.2 42Q37.2 38.2 36 35.5Q34.9 32.8 32.6 31.3Q30.4 29.8 27 29.8Q23.7 29.8 21.4 31.3Q19.1 32.8 17.9 35.5Q16.8 38.1 16.8 41.7V48.8Q16.8 53 18.1 55.8Q19.5 58.7 22 60Q24.5 61.4 27.8 61.4Q30.1 61.4 32 60.8Q33.9 60.1 35.2 58.9Q36.6 57.6 37.3 55.8L52.4 58.3Q51.1 63 47.7 66.5Q44.4 70 39.3 71.9Q34.2 73.8 27.5 73.8ZM75.7 41.6V72.8H58.7V18.2H74.7L75 32H74.3Q76.3 25.4 80.6 21.5Q84.8 17.5 92 17.5Q97.8 17.5 102 20Q106.3 22.6 108.6 27.2Q110.9 31.8 110.9 38V72.8H93.9V41.3Q93.9 36.7 91.6 34.1Q89.2 31.5 85 31.5Q82.3 31.5 80.2 32.7Q78.1 33.9 76.9 36.1Q75.7 38.4 75.7 41.6ZM138.5 73.6Q132.4 73.6 127.4 70.4Q122.4 67.3 119.5 61Q116.6 54.8 116.6 45.5Q116.6 35.9 119.6 29.7Q122.7 23.5 127.6 20.5Q132.6 17.5 138.3 17.5Q142.7 17.5 145.7 19Q148.8 20.4 150.8 22.8Q152.8 25.1 153.8 27.5H154.2V0H171.2V72.8H154.4V63.9H153.8Q152.7 66.4 150.7 68.6Q148.7 70.8 145.7 72.2Q142.6 73.6 138.5 73.6ZM144.3 60.2Q147.5 60.2 149.8 58.4Q152.1 56.6 153.3 53.3Q154.5 50 154.5 45.5Q154.5 41 153.3 37.7Q152.1 34.4 149.8 32.6Q147.5 30.8 144.3 30.8Q141 30.8 138.7 32.6Q136.4 34.5 135.3 37.8Q134.1 41.1 134.1 45.5Q134.1 49.9 135.3 53.2Q136.4 56.6 138.7 58.4Q141 60.2 144.3 60.2ZM204.4 73.8Q195.8 73.8 189.6 70.4Q183.5 67 180.2 60.7Q176.9 54.4 176.9 45.7Q176.9 37.2 180.2 30.9Q183.5 24.6 189.5 21Q195.6 17.5 203.8 17.5Q209.5 17.5 214.3 19.3Q219.1 21.1 222.7 24.6Q226.2 28.2 228.2 33.4Q230.1 38.5 230.1 45.3V49.6H182.9V39.7H222L214 42Q214 38.2 212.9 35.5Q211.7 32.8 209.5 31.3Q207.2 29.8 203.9 29.8Q200.6 29.8 198.3 31.3Q196 32.8 194.8 35.5Q193.6 38.1 193.6 41.7V48.8Q193.6 53 195 55.8Q196.4 58.7 198.9 60Q201.4 61.4 204.7 61.4Q207 61.4 208.8 60.8Q210.7 60.1 212.1 58.9Q213.4 57.6 214.1 55.8L229.3 58.3Q227.9 63 224.6 66.5Q221.2 70 216.1 71.9Q211 73.8 204.4 73.8ZM235.5 72.8V18.2H252V28.1H252.6Q254.1 22.7 257.5 20.1Q260.9 17.5 265.4 17.5Q266.6 17.5 267.9 17.6Q269.2 17.8 270.2 18.1V32.9Q269 32.5 267 32.3Q265 32 263.5 32Q260.3 32 257.9 33.4Q255.4 34.8 254 37.2Q252.6 39.7 252.6 43V72.8Z"/><path fill="#F5B83D" d="M292.9 73.4Q287.2 73.4 283 70.9Q278.7 68.3 276.4 63.7Q274 59.1 274 52.9V18.2H291V49.6Q291 54.2 293.4 56.8Q295.8 59.4 300 59.4Q302.7 59.4 304.8 58.2Q306.9 57 308.1 54.7Q309.3 52.5 309.3 49.3V18.2H326.3V72.8H310.3L310 59H310.7Q308.7 65.5 304.4 69.5Q300.1 73.4 292.9 73.4ZM334 93.2V18.2H350.9V27.5H351.5Q352.5 25.1 354.5 22.8Q356.4 20.4 359.5 19Q362.6 17.5 366.9 17.5Q372.7 17.5 377.6 20.5Q382.6 23.5 385.6 29.7Q388.6 35.9 388.6 45.5Q388.6 54.8 385.7 61Q382.8 67.3 377.8 70.4Q372.9 73.6 366.8 73.6Q362.6 73.6 359.6 72.2Q356.5 70.8 354.5 68.6Q352.5 66.4 351.5 63.9H351.1V93.2ZM361 60.2Q364.3 60.2 366.5 58.4Q368.8 56.6 370 53.2Q371.1 49.9 371.1 45.5Q371.1 41.1 370 37.8Q368.8 34.5 366.5 32.6Q364.3 30.8 361 30.8Q357.7 30.8 355.4 32.6Q353.1 34.4 351.9 37.7Q350.7 41 350.7 45.5Q350.7 50 351.9 53.3Q353.1 56.6 355.4 58.4Q357.7 60.2 361 60.2Z"/></g></symbol>
-<symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="logo" viewBox="0 0 479.4 93.2"><g transform="scale(1.32273)"><rect x="0" y="15" width="40" height="40" fill="#F4F1EA"/><path d="M29 0H55V24H45V10H29Z" fill="#F5B83D"/></g><g transform="translate(90.75 0)"><path fill="#F4F1EA" d="M27.5 73.8Q19 73.8 12.8 70.4Q6.6 67 3.3 60.7Q0 54.4 0 45.7Q0 37.2 3.3 30.9Q6.6 24.6 12.7 21Q18.7 17.5 26.9 17.5Q32.7 17.5 37.5 19.3Q42.3 21.1 45.8 24.6Q49.4 28.2 51.3 33.4Q53.2 38.5 53.2 45.3V49.6H6V39.7H45.1L37.2 42Q37.2 38.2 36 35.5Q34.9 32.8 32.6 31.3Q30.4 29.8 27 29.8Q23.7 29.8 21.4 31.3Q19.1 32.8 17.9 35.5Q16.8 38.1 16.8 41.7V48.8Q16.8 53 18.1 55.8Q19.5 58.7 22 60Q24.5 61.4 27.8 61.4Q30.1 61.4 32 60.8Q33.9 60.1 35.2 58.9Q36.6 57.6 37.3 55.8L52.4 58.3Q51.1 63 47.7 66.5Q44.4 70 39.3 71.9Q34.2 73.8 27.5 73.8ZM75.7 41.6V72.8H58.7V18.2H74.7L75 32H74.3Q76.3 25.4 80.6 21.5Q84.8 17.5 92 17.5Q97.8 17.5 102 20Q106.3 22.6 108.6 27.2Q110.9 31.8 110.9 38V72.8H93.9V41.3Q93.9 36.7 91.6 34.1Q89.2 31.5 85 31.5Q82.3 31.5 80.2 32.7Q78.1 33.9 76.9 36.1Q75.7 38.4 75.7 41.6ZM138.5 73.6Q132.4 73.6 127.4 70.4Q122.4 67.3 119.5 61Q116.6 54.8 116.6 45.5Q116.6 35.9 119.6 29.7Q122.7 23.5 127.6 20.5Q132.6 17.5 138.3 17.5Q142.7 17.5 145.7 19Q148.8 20.4 150.8 22.8Q152.8 25.1 153.8 27.5H154.2V0H171.2V72.8H154.4V63.9H153.8Q152.7 66.4 150.7 68.6Q148.7 70.8 145.7 72.2Q142.6 73.6 138.5 73.6ZM144.3 60.2Q147.5 60.2 149.8 58.4Q152.1 56.6 153.3 53.3Q154.5 50 154.5 45.5Q154.5 41 153.3 37.7Q152.1 34.4 149.8 32.6Q147.5 30.8 144.3 30.8Q141 30.8 138.7 32.6Q136.4 34.5 135.3 37.8Q134.1 41.1 134.1 45.5Q134.1 49.9 135.3 53.2Q136.4 56.6 138.7 58.4Q141 60.2 144.3 60.2ZM204.4 73.8Q195.8 73.8 189.6 70.4Q183.5 67 180.2 60.7Q176.9 54.4 176.9 45.7Q176.9 37.2 180.2 30.9Q183.5 24.6 189.5 21Q195.6 17.5 203.8 17.5Q209.5 17.5 214.3 19.3Q219.1 21.1 222.7 24.6Q226.2 28.2 228.2 33.4Q230.1 38.5 230.1 45.3V49.6H182.9V39.7H222L214 42Q214 38.2 212.9 35.5Q211.7 32.8 209.5 31.3Q207.2 29.8 203.9 29.8Q200.6 29.8 198.3 31.3Q196 32.8 194.8 35.5Q193.6 38.1 193.6 41.7V48.8Q193.6 53 195 55.8Q196.4 58.7 198.9 60Q201.4 61.4 204.7 61.4Q207 61.4 208.8 60.8Q210.7 60.1 212.1 58.9Q213.4 57.6 214.1 55.8L229.3 58.3Q227.9 63 224.6 66.5Q221.2 70 216.1 71.9Q211 73.8 204.4 73.8ZM235.5 72.8V18.2H252V28.1H252.6Q254.1 22.7 257.5 20.1Q260.9 17.5 265.4 17.5Q266.6 17.5 267.9 17.6Q269.2 17.8 270.2 18.1V32.9Q269 32.5 267 32.3Q265 32 263.5 32Q260.3 32 257.9 33.4Q255.4 34.8 254 37.2Q252.6 39.7 252.6 43V72.8Z"/><path fill="#F5B83D" d="M292.9 73.4Q287.2 73.4 283 70.9Q278.7 68.3 276.4 63.7Q274 59.1 274 52.9V18.2H291V49.6Q291 54.2 293.4 56.8Q295.8 59.4 300 59.4Q302.7 59.4 304.8 58.2Q306.9 57 308.1 54.7Q309.3 52.5 309.3 49.3V18.2H326.3V72.8H310.3L310 59H310.7Q308.7 65.5 304.4 69.5Q300.1 73.4 292.9 73.4ZM334 93.2V18.2H350.9V27.5H351.5Q352.5 25.1 354.5 22.8Q356.4 20.4 359.5 19Q362.6 17.5 366.9 17.5Q372.7 17.5 377.6 20.5Q382.6 23.5 385.6 29.7Q388.6 35.9 388.6 45.5Q388.6 54.8 385.7 61Q382.8 67.3 377.8 70.4Q372.9 73.6 366.8 73.6Q362.6 73.6 359.6 72.2Q356.5 70.8 354.5 68.6Q352.5 66.4 351.5 63.9H351.1V93.2ZM361 60.2Q364.3 60.2 366.5 58.4Q368.8 56.6 370 53.2Q371.1 49.9 371.1 45.5Q371.1 41.1 370 37.8Q368.8 34.5 366.5 32.6Q364.3 30.8 361 30.8Q357.7 30.8 355.4 32.6Q353.1 34.4 351.9 37.7Q350.7 41 350.7 45.5Q350.7 50 351.9 53.3Q353.1 56.6 355.4 58.4Q357.7 60.2 361 60.2Z"/></g></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+<symbol id="i-voltar" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-busca" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+<symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 3.5l2.5 5.3 5.8.7-4.3 4 1.1 5.8L12 16.5l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></symbol>
+<symbol id="i-repete" viewBox="0 0 24 24"><path d="M17 3l3 3-3 3"/><path d="M4 11V9a3 3 0 0 1 3-3h13"/><path d="M7 21l-3-3 3-3"/><path d="M20 13v2a3 3 0 0 1-3 3H4"/></symbol>
+<symbol id="i-lapis" viewBox="0 0 24 24"><path d="M4 20l1-4.2L15.6 5.2a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8L8.2 19 4 20z"/><path d="M13.8 7l3.2 3.2"/></symbol>
+<symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
 </defs></svg>
 
 <div class="pagina">
 
-<header class="painel escuro topo">
-  <div class="cabecalho">
-    <svg class="logo" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
+<!-- ====================== ENTRADA ====================== -->
+<div id="entrada">
+<header class="inicio" id="cartao-quiz">
+  <div class="barra barra-inicio">
+    <div class="barra-linha">
+      <svg class="logo logo-barra" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
+      <span class="contador">Pergunta 1 de 5</span>
+    </div>
+    <div class="progresso" aria-hidden="true"><span style="width:20%"></span></div>
   </div>
 
-  <div class="topo-grade">
-    <div class="topo-texto">
+  <div class="inicio-palco">
+    <div class="inicio-oferta">
       <h1 class="t1">Eu faço o seu site <span class="d">de graça.</span> Você só paga <span class="d">se gostar.</span></h1>
-      <p class="lead"><span class="suave">Você vê o site do seu negócio pronto antes de pagar qualquer coisa.</span> Gostou? R$ 100 por ano com site, hospedagem e domínio. Não gostou? Não paga nada.</p>
-      <div class="como">
-        <h2 class="etiqueta"><i class="q"></i>Como funciona</h2>
-        <ol class="passos">
-          <li><span class="n">01</span><span>Você preenche aqui embaixo.</span></li>
-          <li><span class="n">02</span><span>Eu monto o site do seu negócio em cerca de dois dias e te mando o link.</span></li>
-          <li><span class="n">03</span><span>Você olha com calma e decide.</span></li>
-        </ol>
-      </div>
+      <p class="lead"><span class="suave">Eu monto primeiro, você vê pronto e só então decide.</span> Gostou? R$ 100 por ano com site, hospedagem e domínio. Não gostou? Não paga nada.</p>
     </div>
 
-    <div class="anel" id="formulario">
-      <div class="ficha">
-        <form class="formulario" id="form-lead" novalidate data-clarity-mask="true">
-          <div class="campo">
-            <label for="negocio">Qual é o seu negócio?</label>
-            <input id="negocio" name="negocio" type="text" required maxlength="150" autocomplete="organization" placeholder="ex.: salão de beleza, oficina, confeitaria" aria-describedby="erro-negocio">
-            <p class="erro" id="erro-negocio" aria-live="polite"></p>
-          </div>
-          <div class="campo">
-            <label for="instagram">Instagram do negócio</label>
-            <input id="instagram" name="instagram" type="text" required maxlength="200" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seunegocio, ou o site, se tiver" aria-describedby="erro-instagram">
-            <p class="erro" id="erro-instagram" aria-live="polite"></p>
-          </div>
-          <div class="campo">
-            <label for="nome">Seu nome</label>
-            <input id="nome" name="nome" type="text" required maxlength="80" autocomplete="given-name" autocapitalize="words" aria-describedby="erro-nome">
-            <p class="erro" id="erro-nome" aria-live="polite"></p>
-          </div>
-          <div class="campo">
-            <label for="whatsapp">WhatsApp com DDD</label>
-            <input id="whatsapp" name="whatsapp" type="tel" required inputmode="numeric" autocomplete="tel" placeholder="(83) 99999-9999" maxlength="16" aria-describedby="erro-whatsapp">
-            <p class="erro" id="erro-whatsapp" aria-live="polite"></p>
-          </div>
-          <div class="isca" aria-hidden="true">
-            <label for="empresa_site">Não preencha este campo</label>
-            <input id="empresa_site" name="empresa_site" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <button class="botao enviar" type="submit">Quero ver o meu site pronto</button>
-          <p class="nota">Sem custo pra ver. Você só paga se gostar.</p>
-          <p class="consentimento">Ao enviar, você concorda em ser chamado no WhatsApp sobre o seu site. <a href="/privacidade/">Política de privacidade</a></p>
-        </form>
-
-        <div class="pronto" id="pronto" hidden>
-          <h2 class="t3" id="pronto-titulo" tabindex="-1">Quase lá, <span class="d" id="pronto-nome"></span>!</h2>
-          <p id="pronto-texto">Me chama no WhatsApp pra eu já começar o site do seu negócio. Ficou com alguma dúvida? É só perguntar por lá.</p>
-          <a class="botao" id="botao-whats" href="https://wa.me/558399255690"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg>Falar com o Anderson no WhatsApp</a>
-          <p class="nota" id="pronto-nota">Se preferir, eu te chamo no número que você deixou.</p>
-        </div>
-      </div>
+    <div class="pergunta inicio-pergunta">
+      <p class="kicker">Me conta 5 coisas sobre o seu negócio. Leva menos de 1 minuto.</p>
+      <label class="q-titulo" for="tipo">Primeiro: qual é o seu negócio?</label>
+      <input class="campo-q" id="tipo" type="text" maxlength="80" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
+             placeholder="ex.: barbearia, pet shop, contabilidade" aria-describedby="tipo-dica erro-tipo" aria-controls="tipo-lista" data-clarity-mask="true">
+      <p class="q-dica" id="tipo-dica">Toque numa opção ou escreva o seu.</p>
+      <ul class="chips grade" id="tipo-lista" role="listbox" aria-label="Sugestões de negócio"></ul>
+      <p class="erro" id="erro-tipo" aria-live="polite"></p>
+      <button class="botao continuar" id="tipo-continuar" type="button" hidden>Continuar</button>
+      <a class="rolar" href="#t-como">Ainda com dúvida? Veja como funciona <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="painel creme" aria-labelledby="t-sites">
-    <i class="cruz" style="--y:1;--x:6;--yd:1;--xd:15"></i>
-    <div class="prova">
-      <h2 class="t2" id="t-sites">Sites que eu <span class="d">já fiz</span></h2>
-      <ul class="celulares">
-        <li>
-          <div class="celular"><img src="/assets/img/vitrine-mutari-cel.webp" srcset="/assets/img/vitrine-mutari-cel-160.webp 160w, /assets/img/vitrine-mutari-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Site de um salão de beleza aberto no celular"></div>
-          <p class="legenda">Salão de beleza</p>
-        </li>
-        <li>
-          <div class="celular"><img src="/assets/img/vitrine-zero7-cel.webp" srcset="/assets/img/vitrine-zero7-cel-160.webp 160w, /assets/img/vitrine-zero7-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Página de vendas aberta no celular"></div>
-          <p class="legenda">Página de vendas</p>
-        </li>
-        <li>
-          <div class="celular"><img src="/assets/img/vitrine-anderson-ananias-cel.webp" srcset="/assets/img/vitrine-anderson-ananias-cel-160.webp 160w, /assets/img/vitrine-anderson-ananias-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Site de portfólio aberto no celular"></div>
-          <p class="legenda">Portfólio</p>
-        </li>
-      </ul>
+  <section class="painel escuro secao" aria-labelledby="t-como">
+    <p class="etiqueta"><i class="q"></i>Como funciona</p>
+    <h2 class="t2" id="t-como">Eu monto primeiro. <span class="d">Você decide depois.</span></h2>
+    <ol class="passos">
+      <li><span class="n">01</span><span>Você me conta sobre o seu negócio aqui na página.</span></li>
+      <li><span class="n">02</span><span>Eu te chamo no WhatsApp e, em cerca de 2 dias, te mando o link do site pronto.</span></li>
+      <li><span class="n">03</span><span>Você olha com calma e decide. Não gostou? Não paga nada.</span></li>
+    </ol>
+  </section>
+
+  <section class="painel creme secao" aria-labelledby="t-porque">
+    <p class="etiqueta"><i class="q"></i>Só o Instagram basta?</p>
+    <h2 class="t2" id="t-porque">O Instagram traz a pessoa. <span class="d">O site faz ela chamar.</span></h2>
+    <ul class="porque-lista">
+      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-busca"/></svg></span><span>Quem procura no Google te encontra.</span></li>
+      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-repete"/></svg></span><span>Horário, endereço e serviços num link só: você para de responder a mesma pergunta o dia inteiro.</span></li>
+      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-relogio"/></svg></span><span>Não depende do algoritmo: fica no ar o tempo todo.</span></li>
+    </ul>
+  </section>
+
+  <section class="painel escuro secao vitrine" aria-labelledby="t-sites">
+    <p class="etiqueta"><i class="q"></i>Exemplos reais</p>
+    <h2 class="t2" id="t-sites">Sites que eu <span class="d">já fiz</span></h2>
+    <ul class="celulares">
+      <li>
+        <div class="celular"><img src="/assets/img/vitrine-mutari-cel.webp" srcset="/assets/img/vitrine-mutari-cel-160.webp 160w, /assets/img/vitrine-mutari-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Site de um salão de beleza aberto no celular"></div>
+        <p class="legenda">Salão de beleza</p>
+      </li>
+      <li>
+        <div class="celular"><img src="/assets/img/vitrine-zero7-cel.webp" srcset="/assets/img/vitrine-zero7-cel-160.webp 160w, /assets/img/vitrine-zero7-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Página de vendas aberta no celular"></div>
+        <p class="legenda">Página de vendas</p>
+      </li>
+      <li>
+        <div class="celular"><img src="/assets/img/vitrine-anderson-ananias-cel.webp" srcset="/assets/img/vitrine-anderson-ananias-cel-160.webp 160w, /assets/img/vitrine-anderson-ananias-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Site de portfólio aberto no celular"></div>
+        <p class="legenda">Portfólio</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="painel creme secao" aria-labelledby="t-quem">
+    <p class="etiqueta"><i class="q"></i>Quem faz o seu site</p>
+    <div class="quem">
+      <img src="/assets/img/anderson-trabalhando.webp" srcset="/assets/img/anderson-trabalhando-560.webp 560w, /assets/img/anderson-trabalhando.webp 960w" sizes="(min-width:900px) 560px, calc(100vw - 32px)" width="960" height="720" loading="lazy" decoding="async" alt="Anderson Ananias trabalhando no computador">
+      <div>
+        <h2 class="t2" id="t-quem">Prazer, <span class="d">eu sou o Anderson.</span></h2>
+        <p style="margin-top:14px">Trabalho com automação, IA e tráfego pago, então aprendi cedo que <b>site bonito não basta: ele tem que trazer cliente.</b> Atendo de todo o Brasil, tudo pelo WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="painel escuro secao" aria-labelledby="t-duvidas">
+    <p class="etiqueta"><i class="q"></i>Dúvidas</p>
+    <h2 class="t2" id="t-duvidas">O que você precisa <span class="d">saber antes</span></h2>
+    <div class="perguntas">
+      <details class="duvida" open><summary>Por que de graça?<span class="sinal"></span></summary><p>Porque é mais fácil você confiar no que já está vendo pronto do que numa promessa. Eu monto primeiro e você só paga se gostar.</p></details>
+      <details class="duvida"><summary>Qual é a pegadinha?<span class="sinal"></span></summary><p>Nenhuma. Se gostar, a gente fecha. Se não gostar, não paga nada e não me deve nada.</p></details>
+      <details class="duvida"><summary>Preciso mandar foto, logo ou texto?<span class="sinal"></span></summary><p>Não. Numa conversa rápida eu levanto as informações do seu negócio, escrevo os textos e organizo as imagens. Se você já tiver logo e boas fotos, elas entram também.</p></details>
+      <details class="duvida"><summary>O que entra nos R$ 100 por ano?<span class="sinal"></span></summary><p>Site, hospedagem, endereço próprio e ajustes de conteúdo.</p></details>
+    </div>
+  </section>
+
+  <section class="painel creme secao" aria-labelledby="t-final">
+    <div class="chamada">
+      <h2 class="t2" id="t-final">Me conta 5 coisas sobre <span class="d">o seu negócio.</span></h2>
+      <p class="nota">Leva menos de 1 minuto.</p>
+      <a class="botao" href="#cartao-quiz" data-ir-quiz>Quero ver o meu site pronto</a>
     </div>
   </section>
 </main>
@@ -293,8 +415,111 @@ ol,ul{list-style:none}
   <svg class="logo" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
   <a href="/privacidade/">Política de privacidade</a>
 </footer>
+</div>
 
-<a class="botao fixo escondido" id="fixo" href="#formulario">Quero ver o meu site pronto</a>
+<!-- ====================== FOCO (uma pergunta por tela) ====================== -->
+<div id="foco" hidden>
+  <div class="barra">
+    <div class="barra-linha">
+      <button class="voltar" id="voltar" type="button"><svg class="ic" aria-hidden="true"><use href="#i-voltar"/></svg>Voltar</button>
+      <svg class="logo logo-barra" id="logo-barra" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup" hidden><use href="#logo"/></svg>
+      <span class="contador" id="contador" aria-live="polite"></span>
+    </div>
+    <div class="progresso" aria-hidden="true"><span id="barra-progresso"></span></div>
+  </div>
+
+  <div class="palco" id="palco">
+    <!-- 2. Objetivo -->
+    <section class="tela" id="tela-2" hidden>
+      <h2 class="q-titulo" id="q2-titulo" tabindex="-1">O que você mais quer que o site do seu negócio faça?</h2>
+      <div class="opcoes" id="grupo-objetivo">
+        <button class="opcao" type="button" data-objetivo="whats" aria-pressed="false"><span class="ic-caixa"><svg class="ic-cheio" aria-hidden="true"><use href="#i-zap"/></svg></span><span class="txt">Quero que mais gente me chame no WhatsApp</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+        <button class="opcao" type="button" data-objetivo="google" aria-pressed="false"><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-busca"/></svg></span><span class="txt">Quero ser encontrado quando procurarem no Google</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+        <button class="opcao" type="button" data-objetivo="profissional" aria-pressed="false"><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-estrela"/></svg></span><span class="txt">Quero parecer mais profissional</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+        <button class="opcao" type="button" data-objetivo="perguntas" aria-pressed="false"><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-repete"/></svg></span><span class="txt">Cansei de responder as mesmas perguntas todo dia</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+        <button class="opcao" type="button" data-objetivo="outra" aria-pressed="false"><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-lapis"/></svg></span><span class="txt">Outra coisa</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+      </div>
+      <div class="pergunta" id="outra-box" hidden>
+        <input class="campo-q" id="outra" type="text" maxlength="160" autocomplete="off" enterkeyhint="next" placeholder="Escreve aqui o que você quer" aria-label="Outra coisa que você quer que o site faça" aria-describedby="erro-outra" data-clarity-mask="true">
+        <p class="erro" id="erro-outra" aria-live="polite"></p>
+        <button class="botao continuar" id="outra-continuar" type="button">Continuar</button>
+      </div>
+    </section>
+
+    <!-- 3. Nome do negócio -->
+    <section class="tela" id="tela-3" hidden>
+      <label class="q-titulo" for="nome-negocio">Como se chama o seu negócio?</label>
+      <p class="q-dica">Vai no topo do seu site.</p>
+      <input class="campo-q" id="nome-negocio" type="text" maxlength="80" autocomplete="organization" autocapitalize="words" enterkeyhint="next" placeholder="ex.: Barbearia do Zé" aria-describedby="erro-nome-negocio" data-clarity-mask="true">
+      <p class="erro" id="erro-nome-negocio" aria-live="polite"></p>
+      <button class="botao continuar" id="nome-negocio-continuar" type="button">Continuar</button>
+    </section>
+
+    <!-- 4. Instagram -->
+    <section class="tela" id="tela-4" hidden>
+      <label class="q-titulo" id="q4-titulo" for="instagram">Qual é o Instagram do seu negócio?</label>
+      <p class="q-dica">Pra eu conhecer o seu negócio antes da gente conversar.</p>
+      <div class="com-arroba" id="instagram-caixa">
+        <span aria-hidden="true">@</span>
+        <input class="campo-q" id="instagram" type="text" maxlength="200" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="next" placeholder="seunegocio" aria-describedby="erro-instagram" data-clarity-mask="true">
+      </div>
+      <p class="erro" id="erro-instagram" aria-live="polite"></p>
+      <button class="botao continuar" id="instagram-continuar" type="button">Continuar</button>
+      <button class="botao-sec" id="sem-instagram" type="button">Não tenho Instagram</button>
+    </section>
+
+    <!-- 5. Logo -->
+    <section class="tela" id="tela-5" hidden>
+      <h2 class="q-titulo" tabindex="-1">Você já tem logo?</h2>
+      <p class="q-dica">Se tiver, eu uso no site. Se não tiver, tudo bem: não precisa ter pra começar.</p>
+      <div class="opcoes" id="grupo-logo">
+        <button class="opcao" type="button" data-logo="Tenho logo e cores definidas" aria-pressed="false"><span class="txt">Tenho logo e cores definidas</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+        <button class="opcao" type="button" data-logo="Tenho só a logo" aria-pressed="false"><span class="txt">Tenho só a logo</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+        <button class="opcao" type="button" data-logo="Ainda não tenho" aria-pressed="false"><span class="txt">Ainda não tenho</span><span class="marca-sel"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span></button>
+      </div>
+    </section>
+
+    <!-- 6. Contato -->
+    <section class="tela" id="tela-6" hidden>
+      <h2 class="q-titulo" tabindex="-1">Último passo: qual é o seu WhatsApp?</h2>
+      <ol class="depois">
+        <li><span class="n">1</span><span>Eu te chamo pra entender o que você quer no site.</span></li>
+        <li><span class="n">2</span><span>Em cerca de 2 dias, te mando o link dele pronto.</span></li>
+        <li><span class="n">3</span><span>Você olha com calma e decide.</span></li>
+      </ol>
+      <form class="campos" id="form-lead" novalidate data-clarity-mask="true">
+        <div class="campo-c">
+          <label class="rotulo" for="nome">Seu nome</label>
+          <input class="campo-q" id="nome" name="nome" type="text" required maxlength="80" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" aria-describedby="erro-nome">
+          <p class="erro" id="erro-nome" aria-live="polite"></p>
+        </div>
+        <div class="campo-c">
+          <label class="rotulo" for="whatsapp">WhatsApp com DDD</label>
+          <input class="campo-q" id="whatsapp" name="whatsapp" type="tel" required inputmode="numeric" autocomplete="tel" enterkeyhint="send" placeholder="(83) 99999-9999" maxlength="16" aria-describedby="whatsapp-dica erro-whatsapp">
+          <p class="q-dica" id="whatsapp-dica">Só uso pra falar sobre o seu site.</p>
+          <p class="erro" id="erro-whatsapp" aria-live="polite"></p>
+        </div>
+        <div class="isca" aria-hidden="true">
+          <label for="empresa_site">Não preencha este campo</label>
+          <input id="empresa_site" name="empresa_site" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="botao enviar" type="submit">Quero ver o meu site pronto</button>
+        <p class="nota">Sem compromisso: você só paga se gostar.</p>
+        <p class="consentimento">Ao enviar, você concorda em ser chamado no WhatsApp sobre o seu site. <a href="/privacidade/">Política de privacidade</a></p>
+      </form>
+    </section>
+
+    <!-- 7. Depois do envio -->
+    <section class="tela pronto-tela" id="tela-7" hidden>
+      <h2 class="t3" id="pronto-titulo" tabindex="-1">Quase lá, <span class="d" id="pronto-nome"></span>!</h2>
+      <p id="pronto-texto"></p>
+      <a class="botao" id="botao-whats" href="https://wa.me/558399255690"><svg class="ic-cheio" aria-hidden="true"><use href="#i-zap"/></svg>Falar com o Anderson no WhatsApp</a>
+      <p class="nota" id="pronto-nota">Se preferir, eu te chamo no número que você deixou.</p>
+    </section>
+  </div>
+</div>
+
+<a class="botao fixo escondido" id="fixo" href="#cartao-quiz">Quero ver o meu site pronto</a>
 
 </div>
 
@@ -302,7 +527,7 @@ ol,ul{list-style:none}
 (function () {
   var CFG = {
     supabase: 'https://iehanqojggoyaaknsdsk.supabase.co',
-    // Chave pública (anon): só consegue chamar registrar_lead e registrar_clique. Não lê nenhum dado.
+    // Chave pública (anon): só consegue chamar registrar_lead, registrar_clique e registrar_etapa. Não lê nenhum dado.
     anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllaGFucW9qZ2dveWFha25zZHNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NDY3ODcsImV4cCI6MjEwNzMyMjc4N30.-AUTYpOO11qCod0w06a1_SCs2UoT3lOyBIft3VVi72w',
     whats: '558399255690'
   };
@@ -310,6 +535,9 @@ ol,ul{list-style:none}
 
   function rastrear(evento, id) {
     if (typeof window.fbq === 'function') window.fbq('track', evento, {}, { eventID: id });
+  }
+  function rastrearCustom(evento) {
+    if (typeof window.fbq === 'function') window.fbq('trackCustom', evento);
   }
   // Marcos no Clarity, para filtrar as gravações (ex.: começou a preencher e não enviou)
   function marcar(evento) {
@@ -331,8 +559,20 @@ ol,ul{list-style:none}
     return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + 'T' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()) +
       (o >= 0 ? '+' : '-') + p(o / 60) + ':' + p(o % 60);
   }
+  function semAcento(s) {
+    return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  }
+  function enviarSimples(rpc, corpo) {
+    // Requisição simples (text/plain, chave na URL): chega mesmo se a pessoa sair da página na hora
+    var url = CFG.supabase + '/rest/v1/rpc/' + rpc + '?apikey=' + CFG.anon;
+    var foi = false;
+    try { foi = navigator.sendBeacon && navigator.sendBeacon(url, corpo); } catch (e) {}
+    if (!foi) {
+      try { fetch(url, { method: 'POST', body: corpo, keepalive: true, headers: { 'Content-Type': 'text/plain;charset=UTF-8' } }); } catch (e) {}
+    }
+  }
 
-  // 7.1 Origem do visitante (UTMs e fbclid), guardada em memória e na sessão
+  // ---------- Origem do visitante (UTMs e fbclid), guardada em memória e na sessão
   var CHAVES = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
   var origem = {};
   try { origem = JSON.parse(sessionStorage.getItem('enderup_origem')) || {}; } catch (e) { origem = {}; }
@@ -345,7 +585,7 @@ ol,ul{list-style:none}
   try { sessionStorage.setItem('enderup_origem', JSON.stringify(origem)); } catch (e) {}
   if (typeof window.clarity === 'function' && origem.utm_content) window.clarity('set', 'anuncio', origem.utm_content);
 
-  // 7.2 _fbc a partir do fbclid, quando o cookie ainda não existe
+  // _fbc a partir do fbclid, quando o cookie ainda não existe
   var fbcGerado = '';
   var fbclidUrl = busca.get('fbclid');
   if (!cookie('_fbc') && fbclidUrl) {
@@ -354,24 +594,329 @@ ol,ul{list-style:none}
     document.cookie = '_fbc=' + fbcGerado + '; max-age=7776000; path=/' + dominio + '; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
   }
 
-  // Formulário
-  var form = document.getElementById('form-lead');
-  var botao = form.querySelector('.enviar');
-  var campos = {
-    negocio: document.getElementById('negocio'),
-    instagram: document.getElementById('instagram'),
-    nome: document.getElementById('nome'),
-    whatsapp: document.getElementById('whatsapp')
-  };
-  var isca = document.getElementById('empresa_site');
+  // ---------- Estado do quiz (sobrevive a recarregar a página)
+  var CHAVE = 'enderup_quiz_v2';
+  var est = {};
+  try { est = JSON.parse(sessionStorage.getItem(CHAVE)) || {}; } catch (e) { est = {}; }
+  if (!est.sessao) est.sessao = aleatorio(16);
+  est.feitas = est.feitas || {};
+  function salvar() { try { sessionStorage.setItem(CHAVE, JSON.stringify(est)); } catch (e) {} }
+  salvar();
+
+  // Funil: 0 = viu a página, 1..5 = respondeu a pergunta N, 6 = enviou o contato, 7 = clicou no WhatsApp
+  function etapaFeita(n) {
+    if (est.feitas[n]) return;
+    est.feitas[n] = 1;
+    salvar();
+    enviarSimples('registrar_etapa', JSON.stringify({ s: est.sessao, e: String(n), v: VERSAO_PAGINA, a: origem.utm_content || '' }));
+    if (n > 0) marcar('etapa_' + n);
+    if (n === 1) rastrearCustom('IniciouQuiz');
+  }
+  etapaFeita(0);
 
   var comecou = false;
-  form.addEventListener('focusin', function () {
+  function marcarInicio() {
     if (comecou) return;
     comecou = true;
     marcar('comecou_formulario');
     if (typeof window.clarity === 'function') window.clarity('upgrade', 'comecou_formulario');   // garante que a sessão fique gravada
+  }
+
+  // ---------- Elementos
+  var entrada = document.getElementById('entrada');
+  var foco = document.getElementById('foco');
+  var cartao = document.getElementById('cartao-quiz');
+  var barra = document.getElementById('barra-progresso');
+  var contador = document.getElementById('contador');
+  var voltar = document.getElementById('voltar');
+  var telas = {};
+  [2, 3, 4, 5, 6, 7].forEach(function (n) { telas[n] = document.getElementById('tela-' + n); });
+  var PROGRESSO = { 1: 20, 2: 45, 3: 62, 4: 76, 5: 88, 6: 95, 7: 100 };   // avança rápido no começo e devagar no fim
+  var telaAtual = 1;
+
+  function erro(id, msg) {
+    var e = document.getElementById('erro-' + id);
+    var c = document.getElementById(id);
+    if (e) e.textContent = msg || '';
+    if (c) { if (msg) c.setAttribute('aria-invalid', 'true'); else c.removeAttribute('aria-invalid'); }
+    if (msg) marcar('erro_' + id.replace(/-/g, '_'));
+  }
+
+  // ---------- Pergunta 1: tipo de negócio (campo + sugestões)
+  // [nome, gênero para "da sua"/"do seu" ('' = usa "do seu negócio"), popular]
+  var TIPOS = [
+    ['Salão de beleza', 'm', 1], ['Barbearia', 'f', 1], ['Clínica ou consultório', '', 1], ['Restaurante', 'm', 1],
+    ['Confeitaria', 'f', 1], ['Oficina mecânica', 'f', 1], ['Loja de roupas', 'f', 1], ['Pet shop', 'm', 1],
+    ['Academia', 'f'], ['Açaiteria', 'f'], ['Adega', 'f'], ['Agência de marketing', 'f'], ['Agência de viagens', 'f'],
+    ['Assistência técnica', 'f'], ['Ateliê de costura', 'm'], ['Auto elétrica', 'f'], ['Autoescola', 'f'], ['Bicicletaria', 'f'],
+    ['Borracharia', 'f'], ['Brechó', 'm'], ['Buffet', 'm'], ['Cafeteria', 'f'], ['Casa de festas', 'f'], ['Cervejaria', 'f'],
+    ['Chaveiro', 'm'], ['Churrascaria', 'f'], ['Clínica de estética', 'f'], ['Clínica de fisioterapia', 'f'],
+    ['Clínica odontológica', 'f'], ['Clínica veterinária', 'f'], ['Construtora', 'f'], ['Consultório de nutrição', 'm'],
+    ['Consultório de psicologia', 'm'], ['Consultório odontológico', 'm'], ['Corretora de seguros', 'f'], ['Creche', 'f'],
+    ['Delivery', 'm'], ['Design de sobrancelhas', 'm'], ['Distribuidora', 'f'], ['Doceria', 'f'], ['Escola', 'f'],
+    ['Escola de idiomas', 'f'], ['Escritório de advocacia', 'm'], ['Escritório de arquitetura', 'm'],
+    ['Escritório de contabilidade', 'm'], ['Esmalteria', 'f'], ['Estética automotiva', 'f'], ['Estúdio de fotografia', 'm'],
+    ['Estúdio de pilates', 'm'], ['Estúdio de tatuagem', 'm'], ['Farmácia', 'f'], ['Floricultura', 'f'], ['Food truck', 'm'],
+    ['Funilaria', 'f'], ['Gráfica', 'f'], ['Hamburgueria', 'f'], ['Hortifruti', 'm'], ['Hotel', 'm'], ['Imobiliária', 'f'],
+    ['Joalheria', 'f'], ['Lanchonete', 'f'], ['Lava-jato', 'm'], ['Lavanderia', 'f'], ['Loja de calçados', 'f'],
+    ['Loja de celulares', 'f'], ['Loja de cosméticos', 'f'], ['Loja de materiais de construção', 'f'], ['Loja de móveis', 'f'],
+    ['Loja de roupas infantis', 'f'], ['Marcenaria', 'f'], ['Marmitaria', 'f'], ['Mercadinho', 'm'], ['Oficina de motos', 'f'],
+    ['Ótica', 'f'], ['Padaria', 'f'], ['Papelaria', 'f'], ['Pastelaria', 'f'], ['Perfumaria', 'f'], ['Pizzaria', 'f'],
+    ['Pousada', 'f'], ['Salão de festas', 'm'], ['Serralheria', 'f'], ['Sorveteria', 'f'], ['Studio de beleza', 'm'],
+    ['Tabacaria', 'f'], ['Vidraçaria', 'f'],
+    ['Advogado ou advogada', ''], ['Contador ou contadora', ''], ['Dentista', ''], ['Eletricista', ''], ['Fotógrafo ou fotógrafa', ''],
+    ['Personal trainer', ''], ['Psicólogo ou psicóloga', ''], ['Nutricionista', ''], ['Corretor de imóveis', ''], ['Professor particular', '']
+  ];
+  var POPULARES = TIPOS.filter(function (t) { return t[2]; });
+  var campoTipo = document.getElementById('tipo');
+  var listaTipos = document.getElementById('tipo-lista');
+  var contTipo = document.getElementById('tipo-continuar');
+
+  function buscarTipos(q) {
+    q = semAcento(q);
+    if (!q) return POPULARES;
+    var comeca = [], contem = [];
+    TIPOS.forEach(function (t) {
+      var n = semAcento(t[0]);
+      if (n.indexOf(q) === 0 || n.split(/[\s-]+/).some(function (p) { return p.indexOf(q) === 0; })) comeca.push(t);
+      else if (n.indexOf(q) > -1) contem.push(t);
+    });
+    return comeca.concat(contem).slice(0, 5);
+  }
+  function desenharChips(itens) {
+    listaTipos.innerHTML = '';
+    itens.forEach(function (t) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.textContent = t[0];
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', est.tipo && semAcento(est.tipo) === semAcento(t[0]) ? 'true' : 'false');
+      b.addEventListener('click', function () { escolherTipo(t, b); });
+      li.appendChild(b);
+      listaTipos.appendChild(li);
+    });
+    listaTipos.hidden = !itens.length;
+  }
+  function escolherTipo(t, botao) {
+    marcarInicio();
+    campoTipo.value = t[0];
+    est.tipo = t[0]; est.tipoG = t[1]; est.tipoOrigem = 'sugestao';
+    salvar();
+    erro('tipo', '');
+    Array.prototype.forEach.call(listaTipos.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-selected', c === botao ? 'true' : 'false'); });
+    campoTipo.blur();
+    setTimeout(function () { concluir(1); }, poucoMovimento ? 0 : 180);   // deixa ver a escolha marcada
+  }
+  function confirmarTipoDigitado() {
+    var v = campoTipo.value.trim().replace(/\s+/g, ' ');
+    if (v.length < 2) { erro('tipo', 'Me conta qual é o seu negócio.'); campoTipo.focus(); return; }
+    var achado = null;
+    TIPOS.forEach(function (t) { if (semAcento(t[0]) === semAcento(v)) achado = t; });
+    est.tipo = achado ? achado[0] : v;
+    est.tipoG = achado ? achado[1] : '';
+    est.tipoOrigem = achado ? 'sugestao' : 'digitado';
+    salvar();
+    erro('tipo', '');
+    campoTipo.blur();
+    concluir(1);
+  }
+  campoTipo.addEventListener('focus', marcarInicio);
+  campoTipo.addEventListener('input', function () {
+    marcarInicio();
+    var v = campoTipo.value;
+    if (est.tipo && semAcento(est.tipo) !== semAcento(v)) { est.tipo = ''; est.tipoG = ''; salvar(); }
+    desenharChips(buscarTipos(v));
+    contTipo.hidden = v.trim().length < 2;
+    if (v.trim().length >= 2) erro('tipo', '');
   });
+  campoTipo.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); confirmarTipoDigitado(); } });
+  contTipo.addEventListener('click', confirmarTipoDigitado);
+
+  function fraseTipo() {
+    if (!est.tipo || !est.tipoG) return 'do seu negócio';
+    return (est.tipoG === 'f' ? 'da sua ' : 'do seu ') + est.tipo.toLowerCase();
+  }
+
+  // ---------- Navegação entre telas
+  function personalizar(n) {
+    if (n === 2) document.getElementById('q2-titulo').textContent = 'O que você mais quer que o site ' + fraseTipo() + ' faça?';
+    if (n === 4) document.getElementById('q4-titulo').textContent = est.nomeNegocio ? 'Qual é o Instagram de ' + est.nomeNegocio + '?' : 'Qual é o Instagram do seu negócio?';
+  }
+  function focarTela(n) {
+    var alvo = { 3: 'nome-negocio', 4: 'instagram', 6: 'nome' }[n];
+    var el = alvo ? document.getElementById(alvo) : telas[n].querySelector('[tabindex="-1"]');
+    if (el) { try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); } }
+  }
+  var avisouContato = false;
+  function irPara(n, op) {
+    op = op || {};
+    if (n === 1) {
+      document.body.classList.remove('foco');
+      foco.hidden = true;
+      entrada.hidden = false;
+      telaAtual = 1;
+      est.etapa = 1; salvar();
+      desenharChips(buscarTipos(est.tipoOrigem === 'digitado' ? campoTipo.value : ''));
+      contTipo.hidden = campoTipo.value.trim().length < 2;
+      atualizarFixo();
+      cartao.scrollIntoView({ block: 'start' });
+      return;
+    }
+    var vinhaDaEntrada = telaAtual === 1;
+    personalizar(n);
+    if (vinhaDaEntrada) {
+      entrada.hidden = true;
+      foco.hidden = false;
+      document.body.classList.add('foco');
+    }
+    window.scrollTo(0, 0);
+    var antiga = vinhaDaEntrada ? null : telas[telaAtual];
+    var nova = telas[n];
+    Object.keys(telas).forEach(function (k) {
+      var t = telas[k];
+      if (t !== nova && t !== antiga) { t.hidden = true; t.classList.remove('saindo', 'entra-frente', 'entra-tras'); }
+    });
+    if (antiga && antiga !== nova) {
+      antiga.classList.remove('entra-frente', 'entra-tras');
+      antiga.classList.add('saindo');
+      setTimeout(function () {
+        if (antiga !== telas[telaAtual]) antiga.hidden = true;
+        antiga.classList.remove('saindo');
+      }, 150);
+    }
+    nova.hidden = false;
+    nova.classList.remove('saindo', 'entra-frente', 'entra-tras');
+    void nova.offsetWidth;
+    nova.classList.add(op.dir === 'tras' ? 'entra-tras' : 'entra-frente');
+    telaAtual = n;
+    est.etapa = n; salvar();
+    barra.style.width = PROGRESSO[n] + '%';
+    contador.textContent = n <= 5 ? 'Pergunta ' + n + ' de 5' : (n === 6 ? 'Último passo' : '');
+    voltar.hidden = n === 7;
+    document.getElementById('logo-barra').hidden = n !== 7;
+    if (op.empurrar !== false) history.pushState({ quiz: n }, '');
+    if (n === 6 && !avisouContato) { avisouContato = true; rastrearCustom('ChegouNoContato'); }
+    if (op.focar !== false) focarTela(n);
+  }
+  function concluir(n) {
+    etapaFeita(n);
+    irPara(n + 1, { dir: 'frente' });
+  }
+  voltar.addEventListener('click', function () {
+    if (history.state && history.state.quiz > 1) history.back();
+    else irPara(Math.max(1, telaAtual - 1), { dir: 'tras', empurrar: false, focar: false });
+  });
+  window.addEventListener('popstate', function (ev) {
+    var n = (ev.state && ev.state.quiz) || 1;
+    if (est.enviado) { if (telaAtual !== 7) irPara(7, { empurrar: false, focar: false }); return; }
+    if (n === telaAtual) return;
+    irPara(n, { dir: n < telaAtual ? 'tras' : 'frente', empurrar: false, focar: false });
+  });
+
+  function marcarOpcao(grupo, botao) {
+    Array.prototype.forEach.call(grupo.querySelectorAll('.opcao'), function (b) { b.setAttribute('aria-pressed', b === botao ? 'true' : 'false'); });
+  }
+
+  // ---------- Pergunta 2: objetivo
+  var grupoObjetivo = document.getElementById('grupo-objetivo');
+  var outraBox = document.getElementById('outra-box');
+  var campoOutra = document.getElementById('outra');
+  Array.prototype.forEach.call(grupoObjetivo.querySelectorAll('[data-objetivo]'), function (b) {
+    b.addEventListener('click', function () {
+      marcarOpcao(grupoObjetivo, b);
+      var chave = b.getAttribute('data-objetivo');
+      est.objetivoChave = chave;
+      if (chave === 'outra') {
+        outraBox.hidden = false;
+        salvar();
+        campoOutra.focus();
+        return;
+      }
+      outraBox.hidden = true;
+      est.objetivo = b.querySelector('.txt').textContent;
+      salvar();
+      concluir(2);
+    });
+  });
+  function confirmarOutra() {
+    var v = campoOutra.value.trim().replace(/\s+/g, ' ');
+    if (v.length < 2) { erro('outra', 'Escreve em poucas palavras o que você quer.'); campoOutra.focus(); return; }
+    erro('outra', '');
+    est.objetivoChave = 'outra';
+    est.objetivo = v;
+    salvar();
+    concluir(2);
+  }
+  document.getElementById('outra-continuar').addEventListener('click', confirmarOutra);
+  campoOutra.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); confirmarOutra(); } });
+
+  // ---------- Pergunta 3: nome do negócio
+  var campoNomeNegocio = document.getElementById('nome-negocio');
+  function confirmarNomeNegocio() {
+    var v = campoNomeNegocio.value.trim().replace(/\s+/g, ' ');
+    if (v.length < 2) { erro('nome-negocio', 'Coloca o nome do seu negócio.'); campoNomeNegocio.focus(); return; }
+    erro('nome-negocio', '');
+    est.nomeNegocio = v;
+    salvar();
+    concluir(3);
+  }
+  document.getElementById('nome-negocio-continuar').addEventListener('click', confirmarNomeNegocio);
+  campoNomeNegocio.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); confirmarNomeNegocio(); } });
+  campoNomeNegocio.addEventListener('input', function () { if (campoNomeNegocio.value.trim().length >= 2) erro('nome-negocio', ''); });
+
+  // ---------- Pergunta 4: Instagram
+  var campoInsta = document.getElementById('instagram');
+  var caixaInsta = document.getElementById('instagram-caixa');
+  function ehLink(v) { return /\/|^https?:|^www\./i.test(v.trim()); }
+  function normalizaInstagram(v) {
+    v = v.trim();
+    var m = v.match(/instagram\.com\/([A-Za-z0-9._]+)/i);
+    if (m) return '@' + m[1];
+    var h = v.replace(/^@+/, '');
+    if (/^[A-Za-z0-9._]{1,30}$/.test(h)) return '@' + h;
+    return v;
+  }
+  campoInsta.addEventListener('input', function () {
+    caixaInsta.classList.toggle('sem-arroba', ehLink(campoInsta.value));
+    if (campoInsta.value.trim()) erro('instagram', '');
+  });
+  function confirmarInstagram() {
+    var v = campoInsta.value.trim();
+    if (!v.replace(/^@+/, '')) { erro('instagram', 'Coloca o @ ou toca em "Não tenho Instagram".'); campoInsta.focus(); return; }
+    erro('instagram', '');
+    est.instagram = normalizaInstagram(v);
+    est.semInstagram = false;
+    salvar();
+    concluir(4);
+  }
+  document.getElementById('instagram-continuar').addEventListener('click', confirmarInstagram);
+  campoInsta.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); confirmarInstagram(); } });
+  document.getElementById('sem-instagram').addEventListener('click', function () {
+    erro('instagram', '');
+    est.instagram = '';
+    est.semInstagram = true;
+    salvar();
+    concluir(4);
+  });
+
+  // ---------- Pergunta 5: logo
+  var grupoLogo = document.getElementById('grupo-logo');
+  Array.prototype.forEach.call(grupoLogo.querySelectorAll('[data-logo]'), function (b) {
+    b.addEventListener('click', function () {
+      marcarOpcao(grupoLogo, b);
+      est.logo = b.getAttribute('data-logo');
+      salvar();
+      concluir(5);
+    });
+  });
+
+  // ---------- Último passo: contato
+  var form = document.getElementById('form-lead');
+  var botaoEnviar = form.querySelector('.enviar');
+  var campos = { nome: document.getElementById('nome'), whatsapp: document.getElementById('whatsapp') };
+  var isca = document.getElementById('empresa_site');
 
   // WhatsApp: só dígitos, sem 55 e sem 0 na frente, no máximo 11
   function digitosTel(v) {
@@ -390,15 +935,9 @@ ol,ul{list-style:none}
   campos.whatsapp.addEventListener('input', function () {
     campos.whatsapp.value = mascara(digitosTel(campos.whatsapp.value));
   });
-
-  function normalizaInstagram(v) {
-    v = v.trim();
-    return /^[A-Za-z0-9._]{1,30}$/.test(v) ? '@' + v : v;
-  }
+  campos.nome.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); campos.whatsapp.focus(); } });
 
   var regras = {
-    negocio: function (v) { return v.trim().length >= 2 ? '' : 'Me conta qual é o seu negócio.'; },
-    instagram: function (v) { return v.trim().replace(/^@/, '').length >= 2 ? '' : 'Coloca o @ do Instagram do negócio (ou o site, se tiver).'; },
     nome: function (v) { return v.trim().length >= 2 ? '' : 'Como posso te chamar?'; },
     whatsapp: function (v) {
       var d = digitosTel(v);
@@ -409,8 +948,7 @@ ol,ul{list-style:none}
   var tocado = {};
   function validar(nome) {
     var msg = regras[nome](campos[nome].value);
-    document.getElementById('erro-' + nome).textContent = msg;
-    if (msg) campos[nome].setAttribute('aria-invalid', 'true'); else campos[nome].removeAttribute('aria-invalid');
+    erro(nome, msg);
     return !msg;
   }
   Object.keys(campos).forEach(function (nome) {
@@ -418,27 +956,35 @@ ol,ul{list-style:none}
     campos[nome].addEventListener('input', function () { if (tocado[nome]) validar(nome); });
   });
 
-  // Tela depois do envio
-  var lead = null;     // { event_id, nome, negocio, enviado }
-  var pronto = document.getElementById('pronto');
+  // ---------- Depois do envio
+  var lead = null;     // { event_id, nome, enviado }
   var linkWhats = document.getElementById('botao-whats');
-
-  function mostrarPronto(ok) {
+  var OBJETIVO_FRASE = {
+    whats: 'quero que mais gente me chame no WhatsApp',
+    google: 'quero ser encontrado quando procurarem no Google',
+    profissional: 'quero parecer mais profissional',
+    perguntas: 'cansei de responder as mesmas perguntas todo dia'
+  };
+  function mensagemWhats(nome) {
+    var negocio = est.nomeNegocio || 'o meu negócio';
+    var tipo = est.tipo ? ' (' + est.tipo.toLowerCase() + ')' : '';
+    var objetivo = OBJETIVO_FRASE[est.objetivoChave] || (est.objetivo ? 'o que eu mais quero é: ' + est.objetivo.replace(/[.!]+$/, '') : '');
+    return 'Oi, Anderson! Sou ' + nome + ' e acabei de responder lá no site. Meu negócio se chama ' + negocio + tipo +
+      (objetivo ? ' e ' + objetivo : '') + '.';
+  }
+  function mostrarPronto(ok, op) {
     var primeiro = lead.nome.split(/\s+/)[0];
     if (ok) {
       document.getElementById('pronto-nome').textContent = primeiro;
+      document.getElementById('pronto-texto').textContent = 'Quer adiantar? Me manda um oi no WhatsApp e eu já começo o site de ' +
+        (est.nomeNegocio || 'seu negócio') + '. A mensagem já vai escrita, é só enviar. Ficou com alguma dúvida? Pergunta por lá.';
     } else {
       document.getElementById('pronto-titulo').textContent = 'Não consegui enviar agora.';
       document.getElementById('pronto-texto').textContent = 'Mas é só me chamar no WhatsApp que eu já começo o site do seu negócio.';
       document.getElementById('pronto-nota').hidden = true;
     }
-    var msg = 'Oi, Anderson! Sou ' + lead.nome + ', acabei de preencher o formulário do site. Meu negócio é ' + lead.negocio + '.';
-    linkWhats.href = 'https://wa.me/' + CFG.whats + '?text=' + encodeURIComponent(msg);
-    form.hidden = true;
-    pronto.hidden = false;
-    esconderFixo(true);
-    document.getElementById('formulario').scrollIntoView({ behavior: poucoMovimento ? 'auto' : 'smooth', block: 'start' });
-    document.getElementById('pronto-titulo').focus({ preventScroll: true });
+    linkWhats.href = 'https://wa.me/' + CFG.whats + '?text=' + encodeURIComponent(mensagemWhats(lead.nome));
+    irPara(7, op || {});
   }
 
   linkWhats.addEventListener('click', function (ev) {
@@ -447,49 +993,36 @@ ol,ul{list-style:none}
     var destino = linkWhats.href;
     rastrear('Contact', 'contact_' + Date.now() + '_' + aleatorio(8));
     marcar('clicou_whatsapp');
-    if (lead.enviado) {
-      // 8. Aviso de clique: requisição simples, chega mesmo saindo da página
-      var url = CFG.supabase + '/rest/v1/rpc/registrar_clique?apikey=' + CFG.anon;
-      var foi = false;
-      try { foi = navigator.sendBeacon && navigator.sendBeacon(url, lead.event_id); } catch (e) {}
-      if (!foi) {
-        try { fetch(url, { method: 'POST', body: lead.event_id, keepalive: true, headers: { 'Content-Type': 'text/plain;charset=UTF-8' } }); } catch (e) {}
-      }
-    }
+    etapaFeita(7);
+    if (lead.enviado) enviarSimples('registrar_clique', lead.event_id);
     setTimeout(function () { location.href = destino; }, 250);
   });
 
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    if (botao.disabled) return;
+    if (botaoEnviar.disabled) return;
 
     var invalidos = Object.keys(campos).filter(function (nome) { tocado[nome] = true; return !validar(nome); });
-    if (invalidos.length) {
-      marcar('erro_formulario');
-      marcar('erro_' + invalidos[0]);
-      campos[invalidos[0]].focus();
-      return;
-    }
+    if (invalidos.length) { campos[invalidos[0]].focus(); return; }
 
     lead = {
       event_id: 'lead_' + Date.now() + '_' + aleatorio(8),
       nome: campos.nome.value.trim().replace(/\s+/g, ' '),
-      negocio: campos.negocio.value.trim().replace(/\s+/g, ' '),
       enviado: false
     };
 
     // Robô preencheu o campo invisível: não envia nada e segue normalmente
     if (isca.value) { mostrarPronto(true); return; }
 
-    botao.disabled = true;
-    botao.textContent = 'Enviando...';
+    botaoEnviar.disabled = true;
+    botaoEnviar.textContent = 'Enviando...';
 
     var dados = {
       event_id: lead.event_id,
       nome: lead.nome,
       whatsapp: '55' + digitosTel(campos.whatsapp.value),
-      negocio: lead.negocio,
-      instagram: normalizaInstagram(campos.instagram.value),
+      negocio: est.nomeNegocio || est.tipo || '',
+      instagram: est.instagram || '',
       utm_source: origem.utm_source || '',
       utm_medium: origem.utm_medium || '',
       utm_campaign: origem.utm_campaign || '',
@@ -501,7 +1034,13 @@ ol,ul{list-style:none}
       page_url: origem.page_url || location.href,
       user_agent: navigator.userAgent,
       enviado_em: agoraComFuso(),
-      versao: VERSAO_PAGINA
+      versao: VERSAO_PAGINA,
+      respostas: {
+        tipo: est.tipo || '',
+        tipo_origem: est.tipoOrigem || '',
+        objetivo: est.objetivo || '',
+        logo: est.logo || ''
+      }
     };
 
     var controle = 'AbortController' in window ? new AbortController() : null;
@@ -515,8 +1054,11 @@ ol,ul{list-style:none}
     }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       lead.enviado = true;
+      est.enviado = true; est.eventId = lead.event_id; est.nome = lead.nome;
+      salvar();
       rastrear('Lead', lead.event_id);
       marcar('lead_enviado');
+      etapaFeita(6);
       mostrarPronto(true);
     }).catch(function () {
       marcar('falha_envio');
@@ -526,23 +1068,48 @@ ol,ul{list-style:none}
     });
   });
 
-  // Botão fixo do celular: aparece fora do formulário e some quando ele está na tela
+  // ---------- Botão fixo do celular e chamadas para o quiz
   var fixo = document.getElementById('fixo');
-  var formNaTela = true, acabou = false;
-  function esconderFixo(fim) {
-    if (fim) acabou = true;
-    fixo.classList.toggle('escondido', acabou || formNaTela);
-  }
+  var cartaoNaTela = true;
+  function atualizarFixo() { fixo.classList.toggle('escondido', cartaoNaTela || telaAtual !== 1); }
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { formNaTela = es[0].isIntersecting; esconderFixo(); }, { threshold: 0.15 })
-      .observe(document.getElementById('formulario'));
+    new IntersectionObserver(function (es) { cartaoNaTela = es[0].isIntersecting; atualizarFixo(); }, { threshold: 0.15 }).observe(cartao);
   }
-  fixo.addEventListener('click', function (ev) {
+  function irAoQuiz(ev) {
     ev.preventDefault();
-    marcar('clicou_botao_fixo');
-    document.getElementById('formulario').scrollIntoView({ behavior: poucoMovimento ? 'auto' : 'smooth', block: 'start' });
-    setTimeout(function () { campos.negocio.focus({ preventScroll: true }); }, poucoMovimento ? 0 : 450);
-  });
+    cartao.scrollIntoView({ behavior: poucoMovimento ? 'auto' : 'smooth', block: 'start' });
+  }
+  fixo.addEventListener('click', function (ev) { marcar('clicou_botao_fixo'); irAoQuiz(ev); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ir-quiz]'), function (a) { a.addEventListener('click', irAoQuiz); });
+
+  // ---------- Começo: desenha as sugestões e retoma de onde a pessoa parou (se a página recarregou)
+  function restaurarCampos() {
+    if (est.tipo) campoTipo.value = est.tipo;
+    if (est.nomeNegocio) campoNomeNegocio.value = est.nomeNegocio;
+    if (est.instagram) { campoInsta.value = est.instagram.replace(/^@/, ''); caixaInsta.classList.toggle('sem-arroba', ehLink(est.instagram)); }
+    if (est.objetivoChave) {
+      var b = grupoObjetivo.querySelector('[data-objetivo="' + est.objetivoChave + '"]');
+      if (b) marcarOpcao(grupoObjetivo, b);
+      if (est.objetivoChave === 'outra') { outraBox.hidden = false; campoOutra.value = est.objetivo || ''; }
+    }
+    if (est.logo) {
+      var l = grupoLogo.querySelector('[data-logo="' + est.logo + '"]');
+      if (l) marcarOpcao(grupoLogo, l);
+    }
+  }
+  restaurarCampos();
+  desenharChips(buscarTipos(est.tipoOrigem === 'digitado' ? campoTipo.value : ''));
+  contTipo.hidden = campoTipo.value.trim().length < 2;
+  history.replaceState({ quiz: 1 }, '');
+  if (est.enviado && est.nome) {
+    lead = { event_id: est.eventId, nome: est.nome, enviado: true };
+    comecou = true;
+    mostrarPronto(true, { empurrar: false, focar: false });
+  } else if (est.etapa >= 2 && est.etapa <= 6) {
+    comecou = true;
+    for (var i = 2; i <= est.etapa; i++) history.pushState({ quiz: i }, '');
+    irPara(est.etapa, { empurrar: false, focar: false });
+  }
 })();
 </script>
 </body>
