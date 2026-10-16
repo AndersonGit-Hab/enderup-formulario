@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Enderup | Seu site pronto: você só paga se gostar</title>
+<meta name="description" content="Eu faço o seu site de graça. Você só paga se gostar. Você vê o site do seu negócio pronto antes de pagar qualquer coisa.">
+<meta name="theme-color" content="#0B0B0D">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Eu faço o seu site de graça. Você só paga se gostar.">
+<meta property="og:description" content="Você vê o site do seu negócio pronto antes de pagar qualquer coisa.">
+<meta property="og:url" content="https://enderup.com.br/">
+<meta property="og:image" content="https://enderup.com.br/assets/compartilhar.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://enderup.com.br/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://iehanqojggoyaaknsdsk.supabase.co" crossorigin>
+
+<!-- meta tag de verificação de domínio da Meta: {{META_DOMAIN_VERIFICATION}} -->
+
+<!-- Pixel da Meta (conjunto de dados 1042650572116484) -->
+<script>
+var PIXEL_ID = '1042650572116484';
+if (/^\d{6,}$/.test(PIXEL_ID)) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+}
+</script>
+
+<!-- Microsoft Clarity (projeto Enderup) -->
+<script>
+var VERSAO_PAGINA = 'v2';
+var CLARITY_ID = 'yyb84k7y7l';
+if (/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) {
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',CLARITY_ID);
+  clarity('set', 'versao', VERSAO_PAGINA);
+}
+</script>
+
+<style>
+@font-face{font-family:'Bebas Neue';src:url('/assets/bebas-neue.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('/assets/inter.woff2') format('woff2');font-weight:400 800;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter reserva';src:local('Arial'),local('Roboto'),local('Helvetica');size-adjust:107.06%;ascent-override:90.49%;descent-override:22.56%;line-gap-override:0%}
+
+:root{
+  --pagina:#0B0B0D;--painel:#101012;--creme:#F4F1EA;
+  --ambar:#F5B83D;--ambar-claro:#F9CB64;--ambar-fundo:#E29C26;--ambar-texto:#8A5D00;
+  --claro:#F4F1EA;--escuro:#0B0B0D;--btn-txt:#1A1200;--erro:#B42318;
+  --bebas:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  --inter:Inter,'Inter reserva',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --grade:48px;--raio:28px;--pad-y:22px;--pad-x:16px;--pad-b:30px;
+  --pi:max(var(--pad-x),calc((100cqw - 1112px) / 2))
+}
+@media (min-width:900px){:root{--grade:64px;--raio:40px;--pad-y:56px;--pad-x:64px;--pad-b:72px}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--pagina);color:var(--claro);font:400 15px/1.6 var(--inter);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+@media (min-width:900px){body{font-size:16px}}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+ol,ul{list-style:none}
+:focus-visible{outline:2px solid var(--claro);outline-offset:3px;border-radius:6px}
+.creme :focus-visible,.ficha :focus-visible{outline-color:var(--escuro)}
+.ic{width:20px;height:20px;flex:none}
+.pagina{container-type:inline-size}
+
+/* Painéis com grade e brilho, iguais aos da página de referência */
+.painel{position:relative;isolation:isolate;overflow:hidden;padding:var(--pad-y) var(--pi) var(--pad-b);color:var(--cor);
+  background:
+    linear-gradient(var(--gcor) 1px,transparent 1px) var(--pi) 0/var(--grade) var(--grade),
+    linear-gradient(90deg,var(--gcor) 1px,transparent 1px) var(--pi) 0/var(--grade) var(--grade),
+    radial-gradient(120% 55% at var(--p1,100% 0%),var(--b1,transparent),transparent 62%),
+    radial-gradient(95% 45% at var(--p2,0% 100%),var(--b2,transparent),transparent 66%),
+    var(--fundo)}
+.escuro{--fundo:var(--painel);--cor:var(--claro);--suave:#8F8B83;--linha:rgba(244,241,234,.09);--gcor:rgba(244,241,234,.035);--b1:rgba(245,184,61,.14);--b2:rgba(196,92,18,.30)}
+.creme{--fundo:var(--creme);--cor:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);--gcor:rgba(11,11,13,.045)}
+.vitrine{--p1:100% 100%;--p2:0% 0%}
+.cruz{position:absolute;width:11px;height:11px;opacity:.28;pointer-events:none;z-index:-1;top:calc(var(--grade) * var(--y) - 5px);left:calc(var(--pi) + var(--grade) * var(--x) - 5px)}
+@media (min-width:900px){.cruz{top:calc(var(--grade) * var(--yd) - 5px);left:calc(var(--pi) + var(--grade) * var(--xd) - 5px)}}
+.cruz::before,.cruz::after{content:"";position:absolute;background:var(--cor)}
+.cruz::before{left:5px;top:0;width:1px;height:11px}
+.cruz::after{top:5px;left:0;width:11px;height:1px}
+
+/* Tipografia */
+.etiqueta{display:flex;align-items:center;gap:9px;font:500 11.5px/1.35 var(--inter);letter-spacing:.09em;text-transform:uppercase}
+.q{flex:none;width:9px;height:9px;border-radius:2px;background:var(--ambar)}
+.t1,.t2,.t3{font-family:var(--bebas);font-weight:400;text-transform:uppercase;letter-spacing:.004em}
+.t1{font-size:clamp(3.1rem,1.4rem + 7.2vw,6.25rem);line-height:.93}
+.t2{font-size:clamp(2.5rem,1.5rem + 4.6vw,4.5rem);line-height:.95;margin-top:12px}
+.t3{font-size:clamp(2.3rem,1.6rem + 3vw,3.5rem);line-height:.95}
+.escuro .d{color:var(--ambar)}
+.creme .d,.ficha .d{background:linear-gradient(var(--ambar),var(--ambar)) no-repeat 0 62%/100% 76%;color:var(--escuro);padding:0 .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lead{font-size:16px;line-height:1.55;max-width:36ch}
+.lead .suave{color:var(--suave)}
+.nota{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4;color:var(--suave)}
+.nota::before{content:"";flex:none;width:10px;height:10px;border-radius:2px;background:var(--ambar);margin-top:.25em}
+@media (min-width:900px){.etiqueta{font-size:12.5px}.lead{font-size:18px}}
+
+/* Botão âmbar da referência */
+.botao{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:60px;padding:0 22px;border:0;border-radius:18px;cursor:pointer;text-align:center;text-decoration:none;
+  font:600 16.5px/1.2 var(--inter);color:var(--btn-txt);
+  background:radial-gradient(130% 140% at 0% 100%,rgba(255,255,255,.26),transparent 46%),linear-gradient(100deg,var(--ambar-claro),var(--ambar-fundo));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 12px 30px -12px var(--ambar-fundo);transition:transform .12s,filter .12s,opacity .12s}
+.botao:active{transform:translateY(1px);filter:brightness(.95)}
+.botao[disabled]{opacity:.75;cursor:progress}
+.botao .ic{width:24px;height:24px}
+@media (min-width:900px){.botao{min-height:64px;border-radius:20px}}
+
+/* Topo */
+.cabecalho{display:flex;align-items:center;min-height:64px;margin:calc(var(--pad-y) * -1) calc(var(--pi) * -1) 22px;padding:0 var(--pi);border-bottom:1px solid var(--linha);background:rgba(245,184,61,.045)}
+.logo{height:22px;width:auto;aspect-ratio:479.4/93.2}
+.topo .t1{margin:0 0 16px}
+@media (min-width:900px){
+  .cabecalho{min-height:78px;margin-bottom:56px}
+  .logo{height:26px}
+  .topo-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:64px;align-items:start}
+  .topo-texto{padding-top:12px}
+  .topo .t1{margin-bottom:28px}
+}
+
+/* Cartão do formulário */
+.anel{margin-top:24px;padding:5px;border-radius:calc(var(--raio) + 6px);background:rgba(245,184,61,.08);border:1px solid rgba(245,184,61,.35);scroll-margin-top:12px}
+.ficha{border-radius:var(--raio);padding:22px 16px 20px;background:var(--creme);color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11)}
+@media (min-width:900px){.anel{margin-top:0}.ficha{padding:32px 30px 28px}}
+.campo{display:grid;gap:7px;margin-bottom:16px}
+.campo label{font:600 12.5px/1.3 var(--inter);letter-spacing:.06em;text-transform:uppercase}
+.campo input{width:100%;height:54px;padding:0 14px;text-overflow:ellipsis;border-radius:14px;border:1.5px solid rgba(11,11,13,.16);background:#fff;color:var(--escuro);
+  font:400 16px/1.2 var(--inter);transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.campo input::placeholder{color:#8F8B83;opacity:1;font-size:14px}
+.campo input:focus{outline:none;border-color:var(--ambar-fundo);box-shadow:0 0 0 4px rgba(245,184,61,.28)}
+.campo input[aria-invalid="true"]{border-color:var(--erro)}
+.campo input[aria-invalid="true"]:focus{box-shadow:0 0 0 4px rgba(180,35,24,.16)}
+.erro{font-size:13.5px;line-height:1.35;color:var(--erro)}
+.erro:empty{display:none}
+.isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.enviar{margin-top:6px}
+.ficha .nota{margin-top:14px}
+.consentimento{margin-top:12px;font-size:12.5px;line-height:1.45;color:var(--suave)}
+.consentimento a{color:var(--escuro);text-underline-offset:2px}
+
+/* Tela depois do envio */
+.pronto{display:grid;gap:14px}
+.pronto h2{outline:none}
+.pronto p{font-size:16px;line-height:1.5;text-wrap:pretty}
+.pronto .botao{margin-top:6px;min-height:64px;font-size:17px}
+.pronto .nota{margin-top:2px}
+
+/* Como funciona: compacto, entre a oferta e o formulário */
+.como{margin-top:22px}
+.passos{margin-top:10px}
+.passos li{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:baseline;padding:9px 0;border-bottom:1px solid var(--linha);font-size:14.5px;line-height:1.4}
+.passos li:first-child{border-top:1px solid var(--linha)}
+.passos .n{font:500 12.5px/1.4 var(--inter);color:var(--ambar)}
+@media (min-width:900px){
+  .como{margin-top:40px;max-width:480px}
+  .passos{margin-top:14px}
+  .passos li{font-size:16px;padding:13px 0;grid-template-columns:44px minmax(0,1fr)}
+}
+
+/* Faixa de prova: os três sites em moldura de celular */
+.celulares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.celular{border-radius:16px;border:3px solid #1B1B1F;background:#1B1B1F;overflow:hidden;box-shadow:0 18px 36px -16px rgba(11,11,13,.55)}
+.celular img{width:100%;aspect-ratio:300/649;object-fit:cover;object-position:top}
+.legenda{margin-top:10px;font:500 10.5px/1.3 var(--inter);letter-spacing:.07em;text-transform:uppercase;color:var(--suave);text-align:center}
+@media (min-width:600px){.celulares{gap:20px;max-width:640px}.celular{border-radius:22px;border-width:4px}.legenda{font-size:12px}}
+@media (min-width:900px){.prova{text-align:center}.celulares{max-width:860px;margin:44px auto 0;gap:40px}.legenda{margin-top:14px;font-size:12.5px}}
+
+/* Rodapé mínimo */
+.rodape{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:28px var(--pi) 108px;border-top:1px solid rgba(244,241,234,.06);font-size:13px;color:#8F8B83}
+.rodape .logo{height:18px}
+.rodape a{text-underline-offset:2px}
+@media (min-width:900px){.rodape{padding-bottom:32px}}
+
+/* Botão fixo do celular */
+.fixo{position:fixed;left:12px;right:12px;width:auto;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;box-shadow:0 14px 34px -10px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.28);transition:transform .25s,opacity .25s}
+.fixo.escondido{transform:translateY(140%);opacity:0;pointer-events:none}
+@media (min-width:900px){.fixo{display:none}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fixo{transition:none}}
+</style>
+</head>
+
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="logo" viewBox="0 0 479.4 93.2"><g transform="scale(1.32273)"><rect x="0" y="15" width="40" height="40" fill="#F4F1EA"/><path d="M29 0H55V24H45V10H29Z" fill="#F5B83D"/></g><g transform="translate(90.75 0)"><path fill="#F4F1EA" d="M27.5 73.8Q19 73.8 12.8 70.4Q6.6 67 3.3 60.7Q0 54.4 0 45.7Q0 37.2 3.3 30.9Q6.6 24.6 12.7 21Q18.7 17.5 26.9 17.5Q32.7 17.5 37.5 19.3Q42.3 21.1 45.8 24.6Q49.4 28.2 51.3 33.4Q53.2 38.5 53.2 45.3V49.6H6V39.7H45.1L37.2 42Q37.2 38.2 36 35.5Q34.9 32.8 32.6 31.3Q30.4 29.8 27 29.8Q23.7 29.8 21.4 31.3Q19.1 32.8 17.9 35.5Q16.8 38.1 16.8 41.7V48.8Q16.8 53 18.1 55.8Q19.5 58.7 22 60Q24.5 61.4 27.8 61.4Q30.1 61.4 32 60.8Q33.9 60.1 35.2 58.9Q36.6 57.6 37.3 55.8L52.4 58.3Q51.1 63 47.7 66.5Q44.4 70 39.3 71.9Q34.2 73.8 27.5 73.8ZM75.7 41.6V72.8H58.7V18.2H74.7L75 32H74.3Q76.3 25.4 80.6 21.5Q84.8 17.5 92 17.5Q97.8 17.5 102 20Q106.3 22.6 108.6 27.2Q110.9 31.8 110.9 38V72.8H93.9V41.3Q93.9 36.7 91.6 34.1Q89.2 31.5 85 31.5Q82.3 31.5 80.2 32.7Q78.1 33.9 76.9 36.1Q75.7 38.4 75.7 41.6ZM138.5 73.6Q132.4 73.6 127.4 70.4Q122.4 67.3 119.5 61Q116.6 54.8 116.6 45.5Q116.6 35.9 119.6 29.7Q122.7 23.5 127.6 20.5Q132.6 17.5 138.3 17.5Q142.7 17.5 145.7 19Q148.8 20.4 150.8 22.8Q152.8 25.1 153.8 27.5H154.2V0H171.2V72.8H154.4V63.9H153.8Q152.7 66.4 150.7 68.6Q148.7 70.8 145.7 72.2Q142.6 73.6 138.5 73.6ZM144.3 60.2Q147.5 60.2 149.8 58.4Q152.1 56.6 153.3 53.3Q154.5 50 154.5 45.5Q154.5 41 153.3 37.7Q152.1 34.4 149.8 32.6Q147.5 30.8 144.3 30.8Q141 30.8 138.7 32.6Q136.4 34.5 135.3 37.8Q134.1 41.1 134.1 45.5Q134.1 49.9 135.3 53.2Q136.4 56.6 138.7 58.4Q141 60.2 144.3 60.2ZM204.4 73.8Q195.8 73.8 189.6 70.4Q183.5 67 180.2 60.7Q176.9 54.4 176.9 45.7Q176.9 37.2 180.2 30.9Q183.5 24.6 189.5 21Q195.6 17.5 203.8 17.5Q209.5 17.5 214.3 19.3Q219.1 21.1 222.7 24.6Q226.2 28.2 228.2 33.4Q230.1 38.5 230.1 45.3V49.6H182.9V39.7H222L214 42Q214 38.2 212.9 35.5Q211.7 32.8 209.5 31.3Q207.2 29.8 203.9 29.8Q200.6 29.8 198.3 31.3Q196 32.8 194.8 35.5Q193.6 38.1 193.6 41.7V48.8Q193.6 53 195 55.8Q196.4 58.7 198.9 60Q201.4 61.4 204.7 61.4Q207 61.4 208.8 60.8Q210.7 60.1 212.1 58.9Q213.4 57.6 214.1 55.8L229.3 58.3Q227.9 63 224.6 66.5Q221.2 70 216.1 71.9Q211 73.8 204.4 73.8ZM235.5 72.8V18.2H252V28.1H252.6Q254.1 22.7 257.5 20.1Q260.9 17.5 265.4 17.5Q266.6 17.5 267.9 17.6Q269.2 17.8 270.2 18.1V32.9Q269 32.5 267 32.3Q265 32 263.5 32Q260.3 32 257.9 33.4Q255.4 34.8 254 37.2Q252.6 39.7 252.6 43V72.8Z"/><path fill="#F5B83D" d="M292.9 73.4Q287.2 73.4 283 70.9Q278.7 68.3 276.4 63.7Q274 59.1 274 52.9V18.2H291V49.6Q291 54.2 293.4 56.8Q295.8 59.4 300 59.4Q302.7 59.4 304.8 58.2Q306.9 57 308.1 54.7Q309.3 52.5 309.3 49.3V18.2H326.3V72.8H310.3L310 59H310.7Q308.7 65.5 304.4 69.5Q300.1 73.4 292.9 73.4ZM334 93.2V18.2H350.9V27.5H351.5Q352.5 25.1 354.5 22.8Q356.4 20.4 359.5 19Q362.6 17.5 366.9 17.5Q372.7 17.5 377.6 20.5Q382.6 23.5 385.6 29.7Q388.6 35.9 388.6 45.5Q388.6 54.8 385.7 61Q382.8 67.3 377.8 70.4Q372.9 73.6 366.8 73.6Q362.6 73.6 359.6 72.2Q356.5 70.8 354.5 68.6Q352.5 66.4 351.5 63.9H351.1V93.2ZM361 60.2Q364.3 60.2 366.5 58.4Q368.8 56.6 370 53.2Q371.1 49.9 371.1 45.5Q371.1 41.1 370 37.8Q368.8 34.5 366.5 32.6Q364.3 30.8 361 30.8Q357.7 30.8 355.4 32.6Q353.1 34.4 351.9 37.7Q350.7 41 350.7 45.5Q350.7 50 351.9 53.3Q353.1 56.6 355.4 58.4Q357.7 60.2 361 60.2Z"/></g></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+</defs></svg>
+
+<div class="pagina">
+
+<header class="painel escuro topo">
+  <div class="cabecalho">
+    <svg class="logo" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
+  </div>
+
+  <div class="topo-grade">
+    <div class="topo-texto">
+      <h1 class="t1">Eu faço o seu site <span class="d">de graça.</span> Você só paga <span class="d">se gostar.</span></h1>
+      <p class="lead"><span class="suave">Você vê o site do seu negócio pronto antes de pagar qualquer coisa.</span> Gostou? R$ 100 por ano com site, hospedagem e domínio. Não gostou? Não paga nada.</p>
+      <div class="como">
+        <h2 class="etiqueta"><i class="q"></i>Como funciona</h2>
+        <ol class="passos">
+          <li><span class="n">01</span><span>Você preenche aqui embaixo.</span></li>
+          <li><span class="n">02</span><span>Eu monto o site do seu negócio em cerca de dois dias e te mando o link.</span></li>
+          <li><span class="n">03</span><span>Você olha com calma e decide.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="anel" id="formulario">
+      <div class="ficha">
+        <form class="formulario" id="form-lead" novalidate data-clarity-mask="true">
+          <div class="campo">
+            <label for="negocio">Qual é o seu negócio?</label>
+            <input id="negocio" name="negocio" type="text" required maxlength="150" autocomplete="organization" placeholder="ex.: salão de beleza, oficina, confeitaria" aria-describedby="erro-negocio">
+            <p class="erro" id="erro-negocio" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label for="instagram">Instagram do negócio</label>
+            <input id="instagram" name="instagram" type="text" required maxlength="200" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seunegocio, ou o site, se tiver" aria-describedby="erro-instagram">
+            <p class="erro" id="erro-instagram" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label for="nome">Seu nome</label>
+            <input id="nome" name="nome" type="text" required maxlength="80" autocomplete="given-name" autocapitalize="words" aria-describedby="erro-nome">
+            <p class="erro" id="erro-nome" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label for="whatsapp">WhatsApp com DDD</label>
+            <input id="whatsapp" name="whatsapp" type="tel" required inputmode="numeric" autocomplete="tel" placeholder="(83) 99999-9999" maxlength="16" aria-describedby="erro-whatsapp">
+            <p class="erro" id="erro-whatsapp" aria-live="polite"></p>
+          </div>
+          <div class="isca" aria-hidden="true">
+            <label for="empresa_site">Não preencha este campo</label>
+            <input id="empresa_site" name="empresa_site" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <button class="botao enviar" type="submit">Quero ver o meu site pronto</button>
+          <p class="nota">Sem custo pra ver. Você só paga se gostar.</p>
+          <p class="consentimento">Ao enviar, você concorda em ser chamado no WhatsApp sobre o seu site. <a href="/privacidade/">Política de privacidade</a></p>
+        </form>
+
+        <div class="pronto" id="pronto" hidden>
+          <h2 class="t3" id="pronto-titulo" tabindex="-1">Quase lá, <span class="d" id="pronto-nome"></span>!</h2>
+          <p id="pronto-texto">Me chama no WhatsApp pra eu já começar o site do seu negócio. Ficou com alguma dúvida? É só perguntar por lá.</p>
+          <a class="botao" id="botao-whats" href="https://wa.me/558399255690"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg>Falar com o Anderson no WhatsApp</a>
+          <p class="nota" id="pronto-nota">Se preferir, eu te chamo no número que você deixou.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="painel creme" aria-labelledby="t-sites">
+    <i class="cruz" style="--y:1;--x:6;--yd:1;--xd:15"></i>
+    <div class="prova">
+      <h2 class="t2" id="t-sites">Sites que eu <span class="d">já fiz</span></h2>
+      <ul class="celulares">
+        <li>
+          <div class="celular"><img src="/assets/img/vitrine-mutari-cel.webp" srcset="/assets/img/vitrine-mutari-cel-160.webp 160w, /assets/img/vitrine-mutari-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Site de um salão de beleza aberto no celular"></div>
+          <p class="legenda">Salão de beleza</p>
+        </li>
+        <li>
+          <div class="celular"><img src="/assets/img/vitrine-zero7-cel.webp" srcset="/assets/img/vitrine-zero7-cel-160.webp 160w, /assets/img/vitrine-zero7-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Página de vendas aberta no celular"></div>
+          <p class="legenda">Página de vendas</p>
+        </li>
+        <li>
+          <div class="celular"><img src="/assets/img/vitrine-anderson-ananias-cel.webp" srcset="/assets/img/vitrine-anderson-ananias-cel-160.webp 160w, /assets/img/vitrine-anderson-ananias-cel.webp 300w" sizes="(min-width:900px) 260px, 30vw" width="300" height="649" loading="lazy" decoding="async" alt="Site de portfólio aberto no celular"></div>
+          <p class="legenda">Portfólio</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <svg class="logo" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
+  <a href="/privacidade/">Política de privacidade</a>
+</footer>
+
+<a class="botao fixo escondido" id="fixo" href="#formulario">Quero ver o meu site pronto</a>
+
+</div>
+
+<script>
+(function () {
+  var CFG = {
+    supabase: 'https://iehanqojggoyaaknsdsk.supabase.co',
+    // Chave pública (anon): só consegue chamar registrar_lead e registrar_clique. Não lê nenhum dado.
+    anon: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllaGFucW9qZ2dveWFha25zZHNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NDY3ODcsImV4cCI6MjEwNzMyMjc4N30.-AUTYpOO11qCod0w06a1_SCs2UoT3lOyBIft3VVi72w',
+    whats: '558399255690'
+  };
+  var poucoMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function rastrear(evento, id) {
+    if (typeof window.fbq === 'function') window.fbq('track', evento, {}, { eventID: id });
+  }
+  // Marcos no Clarity, para filtrar as gravações (ex.: começou a preencher e não enviou)
+  function marcar(evento) {
+    if (typeof window.clarity === 'function') window.clarity('event', evento);
+  }
+  function aleatorio(n) {
+    var abc = 'abcdefghijklmnopqrstuvwxyz0123456789', s = '', i, v;
+    try { v = crypto.getRandomValues(new Uint8Array(n)); } catch (e) { v = null; }
+    for (i = 0; i < n; i++) s += abc[(v ? v[i] : Math.floor(Math.random() * 256)) % abc.length];
+    return s;
+  }
+  function cookie(nome) {
+    var m = document.cookie.match('(?:^|; )' + nome + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function agoraComFuso() {
+    var d = new Date(), o = -d.getTimezoneOffset();
+    function p(n) { n = Math.floor(Math.abs(n)); return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + 'T' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()) +
+      (o >= 0 ? '+' : '-') + p(o / 60) + ':' + p(o % 60);
+  }
+
+  // 7.1 Origem do visitante (UTMs e fbclid), guardada em memória e na sessão
+  var CHAVES = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+  var origem = {};
+  try { origem = JSON.parse(sessionStorage.getItem('enderup_origem')) || {}; } catch (e) { origem = {}; }
+  var busca = new URLSearchParams(location.search);
+  if (CHAVES.some(function (k) { return busca.get(k); })) {
+    origem = { page_url: location.href };     // chegou de um anúncio novo: troca a origem inteira
+    CHAVES.forEach(function (k) { var v = busca.get(k); if (v) origem[k] = v.slice(0, 500); });
+  }
+  if (!origem.page_url) origem.page_url = location.href;
+  try { sessionStorage.setItem('enderup_origem', JSON.stringify(origem)); } catch (e) {}
+  if (typeof window.clarity === 'function' && origem.utm_content) window.clarity('set', 'anuncio', origem.utm_content);
+
+  // 7.2 _fbc a partir do fbclid, quando o cookie ainda não existe
+  var fbcGerado = '';
+  var fbclidUrl = busca.get('fbclid');
+  if (!cookie('_fbc') && fbclidUrl) {
+    fbcGerado = 'fb.1.' + Date.now() + '.' + fbclidUrl;
+    var dominio = /(^|\.)enderup\.com\.br$/.test(location.hostname) ? '; domain=.enderup.com.br' : '';
+    document.cookie = '_fbc=' + fbcGerado + '; max-age=7776000; path=/' + dominio + '; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
+  }
+
+  // Formulário
+  var form = document.getElementById('form-lead');
+  var botao = form.querySelector('.enviar');
+  var campos = {
+    negocio: document.getElementById('negocio'),
+    instagram: document.getElementById('instagram'),
+    nome: document.getElementById('nome'),
+    whatsapp: document.getElementById('whatsapp')
+  };
+  var isca = document.getElementById('empresa_site');
+
+  var comecou = false;
+  form.addEventListener('focusin', function () {
+    if (comecou) return;
+    comecou = true;
+    marcar('comecou_formulario');
+    if (typeof window.clarity === 'function') window.clarity('upgrade', 'comecou_formulario');   // garante que a sessão fique gravada
+  });
+
+  // WhatsApp: só dígitos, sem 55 e sem 0 na frente, no máximo 11
+  function digitosTel(v) {
+    var d = String(v).replace(/\D/g, '');
+    if (d.length > 11 && d.indexOf('55') === 0) d = d.slice(2);
+    d = d.replace(/^0+/, '');
+    return d.slice(0, 11);
+  }
+  function mascara(d) {
+    if (!d) return '';
+    if (d.length <= 2) return '(' + d;
+    var ddd = d.slice(0, 2), n = d.slice(2);
+    var corte = d.length === 11 ? 5 : 4;
+    return '(' + ddd + ') ' + (n.length > corte ? n.slice(0, corte) + '-' + n.slice(corte) : n);
+  }
+  campos.whatsapp.addEventListener('input', function () {
+    campos.whatsapp.value = mascara(digitosTel(campos.whatsapp.value));
+  });
+
+  function normalizaInstagram(v) {
+    v = v.trim();
+    return /^[A-Za-z0-9._]{1,30}$/.test(v) ? '@' + v : v;
+  }
+
+  var regras = {
+    negocio: function (v) { return v.trim().length >= 2 ? '' : 'Me conta qual é o seu negócio.'; },
+    instagram: function (v) { return v.trim().replace(/^@/, '').length >= 2 ? '' : 'Coloca o @ do Instagram do negócio (ou o site, se tiver).'; },
+    nome: function (v) { return v.trim().length >= 2 ? '' : 'Como posso te chamar?'; },
+    whatsapp: function (v) {
+      var d = digitosTel(v);
+      var ok = /^[1-9]{2}\d{8,9}$/.test(d) && (d.length === 10 || d.charAt(2) === '9');
+      return ok ? '' : 'Confere o número com DDD. Ex.: (83) 99999-9999.';
+    }
+  };
+  var tocado = {};
+  function validar(nome) {
+    var msg = regras[nome](campos[nome].value);
+    document.getElementById('erro-' + nome).textContent = msg;
+    if (msg) campos[nome].setAttribute('aria-invalid', 'true'); else campos[nome].removeAttribute('aria-invalid');
+    return !msg;
+  }
+  Object.keys(campos).forEach(function (nome) {
+    campos[nome].addEventListener('blur', function () { if (campos[nome].value) tocado[nome] = true; if (tocado[nome]) validar(nome); });
+    campos[nome].addEventListener('input', function () { if (tocado[nome]) validar(nome); });
+  });
+
+  // Tela depois do envio
+  var lead = null;     // { event_id, nome, negocio, enviado }
+  var pronto = document.getElementById('pronto');
+  var linkWhats = document.getElementById('botao-whats');
+
+  function mostrarPronto(ok) {
+    var primeiro = lead.nome.split(/\s+/)[0];
+    if (ok) {
+      document.getElementById('pronto-nome').textContent = primeiro;
+    } else {
+      document.getElementById('pronto-titulo').textContent = 'Não consegui enviar agora.';
+      document.getElementById('pronto-texto').textContent = 'Mas é só me chamar no WhatsApp que eu já começo o site do seu negócio.';
+      document.getElementById('pronto-nota').hidden = true;
+    }
+    var msg = 'Oi, Anderson! Sou ' + lead.nome + ', acabei de preencher o formulário do site. Meu negócio é ' + lead.negocio + '.';
+    linkWhats.href = 'https://wa.me/' + CFG.whats + '?text=' + encodeURIComponent(msg);
+    form.hidden = true;
+    pronto.hidden = false;
+    esconderFixo(true);
+    document.getElementById('formulario').scrollIntoView({ behavior: poucoMovimento ? 'auto' : 'smooth', block: 'start' });
+    document.getElementById('pronto-titulo').focus({ preventScroll: true });
+  }
+
+  linkWhats.addEventListener('click', function (ev) {
+    if (!lead) return;
+    ev.preventDefault();
+    var destino = linkWhats.href;
+    rastrear('Contact', 'contact_' + Date.now() + '_' + aleatorio(8));
+    marcar('clicou_whatsapp');
+    if (lead.enviado) {
+      // 8. Aviso de clique: requisição simples, chega mesmo saindo da página
+      var url = CFG.supabase + '/rest/v1/rpc/registrar_clique?apikey=' + CFG.anon;
+      var foi = false;
+      try { foi = navigator.sendBeacon && navigator.sendBeacon(url, lead.event_id); } catch (e) {}
+      if (!foi) {
+        try { fetch(url, { method: 'POST', body: lead.event_id, keepalive: true, headers: { 'Content-Type': 'text/plain;charset=UTF-8' } }); } catch (e) {}
+      }
+    }
+    setTimeout(function () { location.href = destino; }, 250);
+  });
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (botao.disabled) return;
+
+    var invalidos = Object.keys(campos).filter(function (nome) { tocado[nome] = true; return !validar(nome); });
+    if (invalidos.length) {
+      marcar('erro_formulario');
+      marcar('erro_' + invalidos[0]);
+      campos[invalidos[0]].focus();
+      return;
+    }
+
+    lead = {
+      event_id: 'lead_' + Date.now() + '_' + aleatorio(8),
+      nome: campos.nome.value.trim().replace(/\s+/g, ' '),
+      negocio: campos.negocio.value.trim().replace(/\s+/g, ' '),
+      enviado: false
+    };
+
+    // Robô preencheu o campo invisível: não envia nada e segue normalmente
+    if (isca.value) { mostrarPronto(true); return; }
+
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+
+    var dados = {
+      event_id: lead.event_id,
+      nome: lead.nome,
+      whatsapp: '55' + digitosTel(campos.whatsapp.value),
+      negocio: lead.negocio,
+      instagram: normalizaInstagram(campos.instagram.value),
+      utm_source: origem.utm_source || '',
+      utm_medium: origem.utm_medium || '',
+      utm_campaign: origem.utm_campaign || '',
+      utm_content: origem.utm_content || '',
+      utm_term: origem.utm_term || '',
+      fbclid: origem.fbclid || '',
+      fbp: cookie('_fbp'),
+      fbc: cookie('_fbc') || fbcGerado,
+      page_url: origem.page_url || location.href,
+      user_agent: navigator.userAgent,
+      enviado_em: agoraComFuso(),
+      versao: VERSAO_PAGINA
+    };
+
+    var controle = 'AbortController' in window ? new AbortController() : null;
+    var limite = setTimeout(function () { if (controle) controle.abort(); }, 15000);
+
+    fetch(CFG.supabase + '/rest/v1/rpc/registrar_lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: CFG.anon, Authorization: 'Bearer ' + CFG.anon },
+      body: JSON.stringify({ dados: dados }),
+      signal: controle ? controle.signal : undefined
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      lead.enviado = true;
+      rastrear('Lead', lead.event_id);
+      marcar('lead_enviado');
+      mostrarPronto(true);
+    }).catch(function () {
+      marcar('falha_envio');
+      mostrarPronto(false);
+    }).then(function () {
+      clearTimeout(limite);
+    });
+  });
+
+  // Botão fixo do celular: aparece fora do formulário e some quando ele está na tela
+  var fixo = document.getElementById('fixo');
+  var formNaTela = true, acabou = false;
+  function esconderFixo(fim) {
+    if (fim) acabou = true;
+    fixo.classList.toggle('escondido', acabou || formNaTela);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { formNaTela = es[0].isIntersecting; esconderFixo(); }, { threshold: 0.15 })
+      .observe(document.getElementById('formulario'));
+  }
+  fixo.addEventListener('click', function (ev) {
+    ev.preventDefault();
+    marcar('clicou_botao_fixo');
+    document.getElementById('formulario').scrollIntoView({ behavior: poucoMovimento ? 'auto' : 'smooth', block: 'start' });
+    setTimeout(function () { campos.negocio.focus({ preventScroll: true }); }, poucoMovimento ? 0 : 450);
+  });
+})();
+</script>
+</body>
+</html>

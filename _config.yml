@@ -1,0 +1,3 @@
+# GitHub Pages: arquivos do projeto que não devem ser publicados no site
+exclude:
+  - trocar-versao.ps1

@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- GERADO de versoes/v1/index.html por trocar-versao.ps1. Nao edite aqui: edite a versao e rode o script de novo. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -35,6 +36,18 @@ if (/^\d{6,}$/.test(PIXEL_ID)) {
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', PIXEL_ID);
   fbq('track', 'PageView');
+}
+</script>
+
+<!-- Microsoft Clarity (projeto Enderup) -->
+<script>
+var VERSAO_PAGINA = 'v1';
+var CLARITY_ID = 'yyb84k7y7l';
+if (/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) {
+  (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',CLARITY_ID);
+  clarity('set', 'versao', VERSAO_PAGINA);
 }
 </script>
 
@@ -212,7 +225,7 @@ ol,ul{list-style:none}
 
     <div class="anel" id="formulario">
       <div class="ficha">
-        <form class="formulario" id="form-lead" novalidate>
+        <form class="formulario" id="form-lead" novalidate data-clarity-mask="true">
           <div class="campo">
             <label for="negocio">Qual é o seu negócio?</label>
             <input id="negocio" name="negocio" type="text" required maxlength="150" autocomplete="organization" placeholder="ex.: salão de beleza, oficina, confeitaria" aria-describedby="erro-negocio">
@@ -298,6 +311,10 @@ ol,ul{list-style:none}
   function rastrear(evento, id) {
     if (typeof window.fbq === 'function') window.fbq('track', evento, {}, { eventID: id });
   }
+  // Marcos no Clarity, para filtrar as gravações (ex.: começou a preencher e não enviou)
+  function marcar(evento) {
+    if (typeof window.clarity === 'function') window.clarity('event', evento);
+  }
   function aleatorio(n) {
     var abc = 'abcdefghijklmnopqrstuvwxyz0123456789', s = '', i, v;
     try { v = crypto.getRandomValues(new Uint8Array(n)); } catch (e) { v = null; }
@@ -326,6 +343,7 @@ ol,ul{list-style:none}
   }
   if (!origem.page_url) origem.page_url = location.href;
   try { sessionStorage.setItem('enderup_origem', JSON.stringify(origem)); } catch (e) {}
+  if (typeof window.clarity === 'function' && origem.utm_content) window.clarity('set', 'anuncio', origem.utm_content);
 
   // 7.2 _fbc a partir do fbclid, quando o cookie ainda não existe
   var fbcGerado = '';
@@ -346,6 +364,14 @@ ol,ul{list-style:none}
     whatsapp: document.getElementById('whatsapp')
   };
   var isca = document.getElementById('empresa_site');
+
+  var comecou = false;
+  form.addEventListener('focusin', function () {
+    if (comecou) return;
+    comecou = true;
+    marcar('comecou_formulario');
+    if (typeof window.clarity === 'function') window.clarity('upgrade', 'comecou_formulario');   // garante que a sessão fique gravada
+  });
 
   // WhatsApp: só dígitos, sem 55 e sem 0 na frente, no máximo 11
   function digitosTel(v) {
@@ -420,6 +446,7 @@ ol,ul{list-style:none}
     ev.preventDefault();
     var destino = linkWhats.href;
     rastrear('Contact', 'contact_' + Date.now() + '_' + aleatorio(8));
+    marcar('clicou_whatsapp');
     if (lead.enviado) {
       // 8. Aviso de clique: requisição simples, chega mesmo saindo da página
       var url = CFG.supabase + '/rest/v1/rpc/registrar_clique?apikey=' + CFG.anon;
@@ -437,7 +464,12 @@ ol,ul{list-style:none}
     if (botao.disabled) return;
 
     var invalidos = Object.keys(campos).filter(function (nome) { tocado[nome] = true; return !validar(nome); });
-    if (invalidos.length) { campos[invalidos[0]].focus(); return; }
+    if (invalidos.length) {
+      marcar('erro_formulario');
+      marcar('erro_' + invalidos[0]);
+      campos[invalidos[0]].focus();
+      return;
+    }
 
     lead = {
       event_id: 'lead_' + Date.now() + '_' + aleatorio(8),
@@ -468,7 +500,8 @@ ol,ul{list-style:none}
       fbc: cookie('_fbc') || fbcGerado,
       page_url: origem.page_url || location.href,
       user_agent: navigator.userAgent,
-      enviado_em: agoraComFuso()
+      enviado_em: agoraComFuso(),
+      versao: VERSAO_PAGINA
     };
 
     var controle = 'AbortController' in window ? new AbortController() : null;
@@ -483,8 +516,10 @@ ol,ul{list-style:none}
       if (!r.ok) throw new Error('HTTP ' + r.status);
       lead.enviado = true;
       rastrear('Lead', lead.event_id);
+      marcar('lead_enviado');
       mostrarPronto(true);
     }).catch(function () {
+      marcar('falha_envio');
       mostrarPronto(false);
     }).then(function () {
       clearTimeout(limite);
@@ -504,6 +539,7 @@ ol,ul{list-style:none}
   }
   fixo.addEventListener('click', function (ev) {
     ev.preventDefault();
+    marcar('clicou_botao_fixo');
     document.getElementById('formulario').scrollIntoView({ behavior: poucoMovimento ? 'auto' : 'smooth', block: 'start' });
     setTimeout(function () { campos.negocio.focus({ preventScroll: true }); }, poucoMovimento ? 0 : 450);
   });
