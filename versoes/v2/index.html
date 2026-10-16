@@ -79,7 +79,7 @@ a{color:inherit}
 ol,ul{list-style:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:2px solid var(--claro);outline-offset:3px;border-radius:6px}
-.creme :focus-visible,.ficha :focus-visible,#foco :focus-visible{outline-color:var(--escuro)}
+.creme :focus-visible,.inicio :focus-visible,#foco :focus-visible{outline-color:var(--escuro)}
 .ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ic-cheio{width:24px;height:24px;flex:none;fill:currentColor}
 .pagina{container-type:inline-size}
@@ -105,7 +105,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .t2{font-size:clamp(2.35rem,1.4rem + 4.4vw,4.25rem);line-height:.95;margin-top:12px}
 .t3{font-size:clamp(2.4rem,1.7rem + 3vw,3.5rem);line-height:.95}
 .escuro .d{color:var(--ambar)}
-.creme .d,.ficha .d,#foco .d{background:linear-gradient(var(--ambar),var(--ambar)) no-repeat 0 62%/100% 76%;color:var(--escuro);padding:0 .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.creme .d,.inicio .d,#foco .d{background:linear-gradient(var(--ambar),var(--ambar)) no-repeat 0 62%/100% 76%;color:var(--escuro);padding:0 .07em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .lead{font-size:15.5px;line-height:1.55;max-width:38ch}
 .lead .suave{color:var(--suave)}
 .texto{color:var(--suave);max-width:46ch;font-size:15.5px;line-height:1.6}
@@ -123,22 +123,26 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 @media (min-width:900px){.botao{min-height:62px;border-radius:20px}}
 
 /* ---------- Entrada ---------- */
-.cabecalho{display:flex;align-items:center;min-height:56px;margin:calc(var(--pad-y) * -1) calc(var(--pi) * -1) 20px;padding:0 var(--pi);border-bottom:1px solid var(--linha);background:rgba(245,184,61,.045)}
 .logo{height:21px;width:auto;aspect-ratio:479.4/93.2}
-.topo{padding-bottom:28px}
-.topo .t1{margin-bottom:14px}
+/* A primeira tela é a pergunta 1, com a mesma cara das outras etapas */
+.inicio{color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);scroll-margin-top:0;
+  background:
+    linear-gradient(rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    linear-gradient(90deg,rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    radial-gradient(90% 40% at 100% 100%,rgba(245,184,61,.12),transparent 70%),
+    var(--creme)}
+.inicio .barra{position:relative}
+.inicio-palco{display:grid;gap:22px;max-width:600px;margin:0 auto;padding:20px 16px 26px}
+.inicio .t1{font-size:clamp(2.15rem,1.3rem + 4.2vw,4.25rem);line-height:.94}
+.inicio .lead{margin-top:10px;font-size:15px}
+.inicio-pergunta{gap:12px}
+.inicio-pergunta .q-titulo{font-size:24px}
+.rolar{justify-self:center;margin-top:4px;padding:10px;font:600 14px/1.2 var(--inter);color:var(--suave);text-decoration:underline;text-underline-offset:3px}
 @media (min-width:900px){
-  .cabecalho{min-height:76px;margin-bottom:56px}
-  .logo{height:26px}
-  .topo{padding-bottom:var(--pad-b)}
-  .topo-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:64px;align-items:start}
-  .topo-texto{padding-top:10px}
-  .topo .t1{margin-bottom:26px}
+  .inicio-palco{max-width:1112px;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:72px;align-items:center;padding:64px 16px 72px}
+  .inicio .lead{font-size:18px;margin-top:22px}
+  .inicio-pergunta .q-titulo{font-size:28px}
 }
-.anel{margin-top:20px;padding:5px;border-radius:calc(var(--raio) + 5px);background:rgba(245,184,61,.08);border:1px solid rgba(245,184,61,.35);scroll-margin-top:10px}
-.ficha{border-radius:var(--raio);padding:18px 16px 18px;background:var(--creme);color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11)}
-@media (min-width:900px){.anel{margin-top:0}.ficha{padding:28px 28px 26px}}
-.ficha-topo{display:grid;gap:10px;margin-bottom:16px}
 .kicker{font-size:13.5px;line-height:1.4;color:var(--suave)}
 
 /* ---------- Peças do quiz ---------- */
@@ -158,6 +162,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{min-height:42px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid var(--borda);font:600 14.5px/1.2 var(--inter);color:var(--escuro);transition:background .1s,border-color .1s,transform .1s}
 .chip:active{transform:scale(.96)}
+.chips.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chips.grade .chip{width:100%;min-height:54px;padding:8px 14px;border-radius:14px;text-align:left;font-size:15px;line-height:1.25}
 .chip[aria-selected="true"]{background:var(--ambar);border-color:var(--ambar)}
 .opcoes{display:grid;gap:10px}
 .opcao{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:11px 14px;border-radius:16px;background:#fff;border:1.5px solid var(--borda);text-align:left;font:600 16px/1.3 var(--inter);color:var(--escuro);transition:background .1s,border-color .1s,transform .1s}
@@ -237,10 +243,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .quem{display:grid;gap:22px;margin-top:22px}
 .quem img{width:100%;border-radius:22px;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--linha)}
 .quem p{font-size:16px;line-height:1.6;color:var(--suave)}
-.quem b{color:var(--claro);font-weight:600}
+.quem b{color:var(--cor);font-weight:600}
 .perguntas{display:grid;gap:10px;margin-top:22px}
 .duvida{border:1px solid var(--linha);border-radius:18px;transition:background .15s}
 .duvida[open]{background:#fff}
+.escuro .duvida[open]{background:rgba(244,241,234,.05)}
 .duvida summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 18px;gap:12px;align-items:center;padding:17px 16px;font:600 15.5px/1.35 var(--inter)}
 .duvida summary::-webkit-details-marker{display:none}
 .sinal{position:relative;width:14px;height:14px;justify-self:end}
@@ -303,48 +310,36 @@ body.foco .fixo{display:none}
 
 <!-- ====================== ENTRADA ====================== -->
 <div id="entrada">
-<header class="painel escuro topo">
-  <div class="cabecalho">
-    <svg class="logo" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
+<header class="inicio" id="cartao-quiz">
+  <div class="barra barra-inicio">
+    <div class="barra-linha">
+      <svg class="logo logo-barra" viewBox="0 0 479.4 93.2" role="img" aria-label="Enderup"><use href="#logo"/></svg>
+      <span class="contador">Pergunta 1 de 5</span>
+    </div>
+    <div class="progresso" aria-hidden="true"><span style="width:20%"></span></div>
   </div>
 
-  <div class="topo-grade">
-    <div class="topo-texto">
+  <div class="inicio-palco">
+    <div class="inicio-oferta">
       <h1 class="t1">Eu faço o seu site <span class="d">de graça.</span> Você só paga <span class="d">se gostar.</span></h1>
       <p class="lead"><span class="suave">Eu monto primeiro, você vê pronto e só então decide.</span> Gostou? R$ 100 por ano com site, hospedagem e domínio. Não gostou? Não paga nada.</p>
     </div>
 
-    <div class="anel" id="cartao-quiz">
-      <div class="ficha">
-        <div class="ficha-topo">
-          <p class="kicker">Me conta 5 coisas sobre o seu negócio. Leva menos de 1 minuto.</p>
-          <div class="progresso" aria-hidden="true"><span style="width:20%"></span></div>
-        </div>
-        <div class="pergunta">
-          <label class="q-titulo" for="tipo">Primeiro: qual é o seu negócio?</label>
-          <input class="campo-q" id="tipo" type="text" maxlength="80" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
-                 placeholder="ex.: barbearia, pet shop, contabilidade" aria-describedby="tipo-dica erro-tipo" aria-controls="tipo-lista" data-clarity-mask="true">
-          <p class="q-dica" id="tipo-dica">Toque numa opção ou escreva o seu.</p>
-          <ul class="chips" id="tipo-lista" role="listbox" aria-label="Sugestões de negócio"></ul>
-          <p class="erro" id="erro-tipo" aria-live="polite"></p>
-          <button class="botao continuar" id="tipo-continuar" type="button" hidden>Continuar</button>
-        </div>
-      </div>
+    <div class="pergunta inicio-pergunta">
+      <p class="kicker">Me conta 5 coisas sobre o seu negócio. Leva menos de 1 minuto.</p>
+      <label class="q-titulo" for="tipo">Primeiro: qual é o seu negócio?</label>
+      <input class="campo-q" id="tipo" type="text" maxlength="80" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
+             placeholder="ex.: barbearia, pet shop, contabilidade" aria-describedby="tipo-dica erro-tipo" aria-controls="tipo-lista" data-clarity-mask="true">
+      <p class="q-dica" id="tipo-dica">Toque numa opção ou escreva o seu.</p>
+      <ul class="chips grade" id="tipo-lista" role="listbox" aria-label="Sugestões de negócio"></ul>
+      <p class="erro" id="erro-tipo" aria-live="polite"></p>
+      <button class="botao continuar" id="tipo-continuar" type="button" hidden>Continuar</button>
+      <a class="rolar" href="#t-como">Ainda com dúvida? Veja como funciona <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="painel creme secao" aria-labelledby="t-porque">
-    <p class="etiqueta"><i class="q"></i>Só o Instagram basta?</p>
-    <h2 class="t2" id="t-porque">O Instagram traz a pessoa. <span class="d">O site faz ela chamar.</span></h2>
-    <ul class="porque-lista">
-      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-busca"/></svg></span><span>Quem procura no Google te encontra.</span></li>
-      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-repete"/></svg></span><span>Horário, endereço e serviços num link só: você para de responder a mesma pergunta o dia inteiro.</span></li>
-      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-relogio"/></svg></span><span>Não depende do algoritmo: fica no ar o tempo todo.</span></li>
-    </ul>
-  </section>
-
   <section class="painel escuro secao" aria-labelledby="t-como">
     <p class="etiqueta"><i class="q"></i>Como funciona</p>
     <h2 class="t2" id="t-como">Eu monto primeiro. <span class="d">Você decide depois.</span></h2>
@@ -355,7 +350,17 @@ body.foco .fixo{display:none}
     </ol>
   </section>
 
-  <section class="painel creme secao vitrine" aria-labelledby="t-sites">
+  <section class="painel creme secao" aria-labelledby="t-porque">
+    <p class="etiqueta"><i class="q"></i>Só o Instagram basta?</p>
+    <h2 class="t2" id="t-porque">O Instagram traz a pessoa. <span class="d">O site faz ela chamar.</span></h2>
+    <ul class="porque-lista">
+      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-busca"/></svg></span><span>Quem procura no Google te encontra.</span></li>
+      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-repete"/></svg></span><span>Horário, endereço e serviços num link só: você para de responder a mesma pergunta o dia inteiro.</span></li>
+      <li><span class="ic-caixa"><svg class="ic" aria-hidden="true"><use href="#i-relogio"/></svg></span><span>Não depende do algoritmo: fica no ar o tempo todo.</span></li>
+    </ul>
+  </section>
+
+  <section class="painel escuro secao vitrine" aria-labelledby="t-sites">
     <p class="etiqueta"><i class="q"></i>Exemplos reais</p>
     <h2 class="t2" id="t-sites">Sites que eu <span class="d">já fiz</span></h2>
     <ul class="celulares">
@@ -374,7 +379,7 @@ body.foco .fixo{display:none}
     </ul>
   </section>
 
-  <section class="painel escuro secao" aria-labelledby="t-quem">
+  <section class="painel creme secao" aria-labelledby="t-quem">
     <p class="etiqueta"><i class="q"></i>Quem faz o seu site</p>
     <div class="quem">
       <img src="/assets/img/anderson-trabalhando.webp" srcset="/assets/img/anderson-trabalhando-560.webp 560w, /assets/img/anderson-trabalhando.webp 960w" sizes="(min-width:900px) 560px, calc(100vw - 32px)" width="960" height="720" loading="lazy" decoding="async" alt="Anderson Ananias trabalhando no computador">
@@ -385,7 +390,7 @@ body.foco .fixo{display:none}
     </div>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-duvidas">
+  <section class="painel escuro secao" aria-labelledby="t-duvidas">
     <p class="etiqueta"><i class="q"></i>Dúvidas</p>
     <h2 class="t2" id="t-duvidas">O que você precisa <span class="d">saber antes</span></h2>
     <div class="perguntas">
@@ -396,7 +401,7 @@ body.foco .fixo{display:none}
     </div>
   </section>
 
-  <section class="painel escuro secao" aria-labelledby="t-final">
+  <section class="painel creme secao" aria-labelledby="t-final">
     <div class="chamada">
       <h2 class="t2" id="t-final">Me conta 5 coisas sobre <span class="d">o seu negócio.</span></h2>
       <p class="nota">Leva menos de 1 minuto.</p>
