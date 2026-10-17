@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- GERADO de versoes/v2/index.html por trocar-versao.ps1. Nao edite aqui: edite a versao e rode o script de novo. -->
+<!-- GERADO de versoes/v3/index.html por trocar-versao.ps1. Nao edite aqui: edite a versao e rode o script de novo. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -41,7 +41,7 @@ if (/^\d{6,}$/.test(PIXEL_ID)) {
 
 <!-- Microsoft Clarity (projeto Enderup) -->
 <script>
-var VERSAO_PAGINA = 'v2';
+var VERSAO_PAGINA = 'v3';
 var CLARITY_ID = 'yyb84k7y7l';
 if (/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) {
   (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -59,7 +59,7 @@ if (/^[a-z0-9]{6,}$/i.test(CLARITY_ID)) {
 :root{
   --pagina:#0B0B0D;--painel:#101012;--creme:#F4F1EA;
   --ambar:#F5B83D;--ambar-claro:#F9CB64;--ambar-fundo:#E29C26;--ambar-texto:#8A5D00;
-  --claro:#F4F1EA;--escuro:#0B0B0D;--btn-txt:#1A1200;--erro:#B42318;--borda:rgba(11,11,13,.15);
+  --claro:#F4F1EA;--escuro:#0B0B0D;--btn-txt:#1A1200;--erro:#B42318;--borda:#8F8B83;
   --bebas:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
   --inter:Inter,'Inter reserva',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --grade:48px;--raio:26px;--pad-y:18px;--pad-x:16px;--pad-b:30px;
@@ -126,21 +126,31 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 /* ---------- Entrada ---------- */
 .logo{height:21px;width:auto;aspect-ratio:479.4/93.2}
 /* A primeira tela é a pergunta 1, com a mesma cara das outras etapas */
-.inicio{color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);scroll-margin-top:0;
+/* Primeira tela escura (como a página de referência): o âmbar do título tem contraste e o cartão branco salta */
+.inicio{color:var(--claro);--suave:#8F8B83;--linha:rgba(244,241,234,.09);scroll-margin-top:0;
   background:
-    linear-gradient(rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
-    linear-gradient(90deg,rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
-    radial-gradient(90% 40% at 100% 100%,rgba(245,184,61,.12),transparent 70%),
-    var(--creme)}
+    linear-gradient(rgba(244,241,234,.035) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    linear-gradient(90deg,rgba(244,241,234,.035) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    radial-gradient(90% 55% at 100% 0%,rgba(245,184,61,.14),transparent 62%),
+    radial-gradient(80% 45% at 0% 100%,rgba(196,92,18,.24),transparent 66%),
+    var(--painel)}
 .inicio .barra{position:relative}
-.inicio-palco{display:grid;gap:22px;max-width:600px;margin:0 auto;padding:20px 16px 26px}
+.inicio-palco{display:grid;gap:20px;max-width:600px;margin:0 auto;padding:20px 16px 50px}
 .inicio .t1{font-size:clamp(2.15rem,1.3rem + 4.2vw,4.25rem);line-height:.94}
+.inicio .t1 .d{background:none;padding:0;color:var(--ambar)}
 .inicio .lead{margin-top:10px;font-size:15px}
-.inicio-pergunta{gap:12px}
-.inicio-pergunta .q-titulo{font-size:24px}
-.rolar{justify-self:center;margin-top:4px;padding:10px;font:600 14px/1.2 var(--inter);color:var(--suave);text-decoration:underline;text-underline-offset:3px}
+/* Cartão da pergunta 1: branco, com sombra e faixa âmbar, para ser o foco da tela */
+.cartao-pergunta{color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);display:grid;gap:12px;text-align:left;background:#fff;border-radius:22px;border-top:4px solid var(--ambar);padding:16px 16px 18px;box-shadow:0 1px 0 rgba(11,11,13,.05),0 24px 48px -26px rgba(11,11,13,.55)}
+.cartao-topo{display:flex;align-items:center;gap:10px}
+.num{width:28px;height:28px;border-radius:50%;background:var(--escuro);color:var(--ambar);display:grid;place-items:center;font:700 13px/1 var(--inter);flex:none}
+.cartao-pergunta .q-titulo{font-size:23px}
+.cartao-pergunta .chips.grade{min-height:246px;align-content:start}
+.cartao-final{width:100%;max-width:560px;margin-top:6px}
 @media (min-width:900px){
-  .inicio-palco{max-width:1112px;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:72px;align-items:center;padding:64px 16px 72px}
+  .inicio{min-height:calc(100vh - 110px);display:flex;flex-direction:column}
+  .inicio-palco{flex:1;width:100%;max-width:1112px;grid-template-columns:minmax(0,1fr) minmax(0,500px);gap:72px;align-items:center;padding:48px 16px 80px}
+  .cartao-pergunta{padding:24px 24px 26px}
+  .cartao-pergunta .q-titulo{font-size:27px}
   .inicio .lead{font-size:18px;margin-top:22px}
   .inicio-pergunta .q-titulo{font-size:28px}
 }
@@ -154,7 +164,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .q-dica{font-size:14.5px;line-height:1.45;color:var(--suave)}
 .campo-q{width:100%;height:56px;padding:0 14px;border-radius:14px;border:1.5px solid var(--borda);background:#fff;color:var(--escuro);
   font:400 17px/1.2 var(--inter);text-overflow:ellipsis;transition:border-color .1s,box-shadow .1s;-webkit-appearance:none;appearance:none}
-.campo-q::placeholder{color:#8F8B83;opacity:1;font-size:15px}
+.campo-q::placeholder{color:#6B675F;opacity:1;font-size:15px}
 .campo-q:focus{outline:none;border-color:var(--ambar-fundo);box-shadow:0 0 0 4px rgba(245,184,61,.28)}
 .campo-q[aria-invalid="true"]{border-color:var(--erro)}
 .rotulo{display:block;font:600 12.5px/1.3 var(--inter);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
@@ -165,6 +175,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .chip:active{transform:scale(.96)}
 .chips.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .chips.grade .chip{width:100%;min-height:54px;padding:8px 14px;border-radius:14px;text-align:left;font-size:15px;line-height:1.25}
+.chips.grade .item-criar{grid-column:1/-1}
+.chips.grade .chip.criar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--ambar);border-color:var(--ambar-fundo);font-weight:700}
+.chip.criar span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip.criar .ic{width:20px;height:20px}
 .chip[aria-selected="true"]{background:var(--ambar);border-color:var(--ambar)}
 .opcoes{display:grid;gap:10px}
 .opcao{display:flex;align-items:center;gap:12px;width:100%;min-height:60px;padding:11px 14px;border-radius:16px;background:#fff;border:1.5px solid var(--borda);text-align:left;font:600 16px/1.3 var(--inter);color:var(--escuro);transition:background .1s,border-color .1s,transform .1s}
@@ -230,6 +244,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 /* ---------- Seções para quem rola a página ---------- */
 .porque-lista{display:grid;gap:10px;margin-top:22px}
 .porque-lista li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center;padding:14px;border-radius:18px;background:#fff;border:1px solid var(--linha);font-size:15.5px;line-height:1.45}
+.escuro .porque-lista li{background:rgba(244,241,234,.04)}
 .ic-caixa{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(245,184,61,.16);color:var(--ambar-texto)}
 .ic-caixa .ic{width:22px;height:22px}
 .escuro .ic-caixa{color:var(--ambar)}
@@ -237,6 +252,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .passos li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;padding:15px 0;border-bottom:1px solid var(--linha);font-size:16px;line-height:1.45}
 .passos li:first-child{border-top:1px solid var(--linha)}
 .passos .n{font:500 13px/1.45 var(--inter);color:var(--ambar)}
+.creme .passos .n{color:var(--ambar-texto)}
 .celulares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px}
 .celular{border-radius:16px;border:3px solid #1B1B1F;background:#1B1B1F;overflow:hidden;box-shadow:0 18px 36px -16px rgba(11,11,13,.55)}
 .celular img{width:100%;aspect-ratio:300/649;object-fit:cover;object-position:top}
@@ -257,6 +273,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .sinal::after{left:6px;top:0;width:2px;height:14px;transition:transform .15s}
 .duvida[open] .sinal::after{transform:scaleY(0)}
 .duvida p{padding:0 16px 18px;color:var(--suave);font-size:15px;line-height:1.6}
+.folha{position:relative;z-index:1;margin-top:-26px;border-radius:28px 28px 0 0;padding-top:12px}
+/* Duas barras de cor sólida que giram em torno do MESMO ponto (centro da ponta arredondada): junção sem emenda */
+.puxador{position:relative;display:block;width:56px;height:16px;margin:0 auto 18px;animation:pula 1.5s ease-in-out infinite}
+.puxador i{position:absolute;top:5px;width:28px;height:5px;border-radius:2.5px;background:var(--ambar);transition:transform .45s var(--curva),background .45s}
+.puxador i:first-child{left:2.5px;transform-origin:25.5px 2.5px;transform:rotate(24deg)}
+.puxador i:last-child{left:25.5px;transform-origin:2.5px 2.5px;transform:rotate(-24deg)}
+.rolou .puxador{animation:none}
+.creme .puxador i{background:var(--ambar-fundo)}
+.rolou .puxador i{transform:none;background:#676662}
+.creme.rolou .puxador i{background:#B9B4AA}
+@keyframes pula{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.puxador{animation:none}}
 .chamada{text-align:center;display:grid;justify-items:center;gap:16px}
 .chamada .botao{max-width:420px}
 @media (min-width:600px){.celulares{gap:20px;max-width:640px}.celular{border-radius:22px;border-width:4px}.legenda{font-size:12px}}
@@ -304,6 +332,7 @@ body.foco .fixo{display:none}
 <symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 3.5l2.5 5.3 5.8.7-4.3 4 1.1 5.8L12 16.5l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></symbol>
 <symbol id="i-repete" viewBox="0 0 24 24"><path d="M17 3l3 3-3 3"/><path d="M4 11V9a3 3 0 0 1 3-3h13"/><path d="M7 21l-3-3 3-3"/><path d="M20 13v2a3 3 0 0 1-3 3H4"/></symbol>
 <symbol id="i-lapis" viewBox="0 0 24 24"><path d="M4 20l1-4.2L15.6 5.2a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8L8.2 19 4 20z"/><path d="M13.8 7l3.2 3.2"/></symbol>
+<symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
 </defs></svg>
 
@@ -326,22 +355,21 @@ body.foco .fixo{display:none}
       <p class="lead"><span class="suave">Eu monto primeiro, você vê pronto e só então decide.</span> Gostou? R$ 100 por ano com site, hospedagem e domínio. Não gostou? Não paga nada.</p>
     </div>
 
-    <div class="pergunta inicio-pergunta">
-      <p class="kicker">Me conta 5 coisas sobre o seu negócio. Leva menos de 1 minuto.</p>
+    <div class="cartao-pergunta">
+      <div class="cartao-topo"><span class="num" aria-hidden="true">1</span><p class="kicker">Me conta 5 coisas sobre o seu negócio. Leva menos de 1 minuto.</p></div>
       <label class="q-titulo" for="tipo">Primeiro: qual é o seu negócio?</label>
       <input class="campo-q" id="tipo" type="text" maxlength="80" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
              placeholder="ex.: barbearia, pet shop, contabilidade" aria-describedby="tipo-dica erro-tipo" aria-controls="tipo-lista" data-clarity-mask="true">
       <p class="q-dica" id="tipo-dica">Toque numa opção ou escreva o seu.</p>
       <ul class="chips grade" id="tipo-lista" role="listbox" aria-label="Sugestões de negócio"></ul>
       <p class="erro" id="erro-tipo" aria-live="polite"></p>
-      <button class="botao continuar" id="tipo-continuar" type="button" hidden>Continuar</button>
-      <a class="rolar" href="#t-como">Ainda com dúvida? Veja como funciona <span aria-hidden="true">↓</span></a>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="painel escuro secao" aria-labelledby="t-como">
+  <section class="painel creme secao folha" aria-labelledby="t-como">
+    <span class="puxador" aria-hidden="true"><i></i><i></i></span>
     <p class="etiqueta"><i class="q"></i>Como funciona</p>
     <h2 class="t2" id="t-como">Eu monto primeiro. <span class="d">Você decide depois.</span></h2>
     <ol class="passos">
@@ -351,7 +379,7 @@ body.foco .fixo{display:none}
     </ol>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-porque">
+  <section class="painel escuro secao" aria-labelledby="t-porque">
     <p class="etiqueta"><i class="q"></i>Só o Instagram basta?</p>
     <h2 class="t2" id="t-porque">O Instagram traz a pessoa. <span class="d">O site faz ela chamar.</span></h2>
     <ul class="porque-lista">
@@ -361,7 +389,7 @@ body.foco .fixo{display:none}
     </ul>
   </section>
 
-  <section class="painel escuro secao vitrine" aria-labelledby="t-sites">
+  <section class="painel creme secao vitrine" aria-labelledby="t-sites">
     <p class="etiqueta"><i class="q"></i>Exemplos reais</p>
     <h2 class="t2" id="t-sites">Sites que eu <span class="d">já fiz</span></h2>
     <ul class="celulares">
@@ -380,7 +408,7 @@ body.foco .fixo{display:none}
     </ul>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-quem">
+  <section class="painel escuro secao" aria-labelledby="t-quem">
     <p class="etiqueta"><i class="q"></i>Quem faz o seu site</p>
     <div class="quem">
       <img src="/assets/img/anderson-trabalhando.webp" srcset="/assets/img/anderson-trabalhando-560.webp 560w, /assets/img/anderson-trabalhando.webp 960w" sizes="(min-width:900px) 560px, calc(100vw - 32px)" width="960" height="720" loading="lazy" decoding="async" alt="Anderson Ananias trabalhando no computador">
@@ -391,7 +419,7 @@ body.foco .fixo{display:none}
     </div>
   </section>
 
-  <section class="painel escuro secao" aria-labelledby="t-duvidas">
+  <section class="painel creme secao" aria-labelledby="t-duvidas">
     <p class="etiqueta"><i class="q"></i>Dúvidas</p>
     <h2 class="t2" id="t-duvidas">O que você precisa <span class="d">saber antes</span></h2>
     <div class="perguntas">
@@ -402,11 +430,19 @@ body.foco .fixo{display:none}
     </div>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-final">
+  <section class="painel escuro secao" aria-labelledby="t-final">
     <div class="chamada">
       <h2 class="t2" id="t-final">Me conta 5 coisas sobre <span class="d">o seu negócio.</span></h2>
       <p class="nota">Leva menos de 1 minuto.</p>
-      <a class="botao" href="#cartao-quiz" data-ir-quiz>Quero ver o meu site pronto</a>
+      <div class="cartao-pergunta cartao-final" id="cartao-final">
+        <div class="cartao-topo"><span class="num" aria-hidden="true">1</span><p class="kicker">Pergunta 1 de 5</p></div>
+        <label class="q-titulo" for="tipo-final">Primeiro: qual é o seu negócio?</label>
+        <input class="campo-q" id="tipo-final" type="text" maxlength="80" autocomplete="off" autocapitalize="sentences" enterkeyhint="next"
+               placeholder="ex.: barbearia, pet shop, contabilidade" aria-describedby="tipo-final-dica erro-tipo-final" aria-controls="tipo-lista-final" data-clarity-mask="true">
+        <p class="q-dica" id="tipo-final-dica">Toque numa opção ou escreva o seu.</p>
+        <ul class="chips grade" id="tipo-lista-final" role="listbox" aria-label="Sugestões de negócio"></ul>
+        <p class="erro" id="erro-tipo-final" aria-live="polite"></p>
+      </div>
     </div>
   </section>
 </main>
@@ -448,8 +484,8 @@ body.foco .fixo{display:none}
 
     <!-- 3. Nome do negócio -->
     <section class="tela" id="tela-3" hidden>
-      <label class="q-titulo" for="nome-negocio">Como se chama o seu negócio?</label>
-      <p class="q-dica">Vai no topo do seu site.</p>
+      <label class="q-titulo" id="q3-titulo" for="nome-negocio">Como se chama o seu negócio?</label>
+      <p class="q-dica" id="q3-dica">Vai no topo do seu site. Trabalha com o seu próprio nome? Pode colocar ele.</p>
       <input class="campo-q" id="nome-negocio" type="text" maxlength="80" autocomplete="organization" autocapitalize="words" enterkeyhint="next" placeholder="ex.: Barbearia do Zé" aria-describedby="erro-nome-negocio" data-clarity-mask="true">
       <p class="erro" id="erro-nome-negocio" aria-live="polite"></p>
       <button class="botao continuar" id="nome-negocio-continuar" type="button">Continuar</button>
@@ -668,10 +704,79 @@ body.foco .fixo{display:none}
     ['Personal trainer', ''], ['Psicólogo ou psicóloga', ''], ['Nutricionista', ''], ['Corretor de imóveis', ''], ['Professor particular', '']
   ];
   var POPULARES = TIPOS.filter(function (t) { return t[2]; });
-  var campoTipo = document.getElementById('tipo');
-  var listaTipos = document.getElementById('tipo-lista');
-  var contTipo = document.getElementById('tipo-continuar');
-
+  // Duas entradas para a pergunta 1: no topo e no fim da página (para quem leu tudo)
+  var perguntasTipo = [];
+  function criarPerguntaTipo(campo, lista, erroId, origem) {
+    function item(texto, classe, selecionado, acao) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (classe ? ' ' + classe : '');
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', selecionado ? 'true' : 'false');
+      if (classe === 'criar') {
+        li.className = 'item-criar';
+        var s = document.createElement('span');
+        s.textContent = texto;
+        b.appendChild(s);
+        b.insertAdjacentHTML('beforeend', '<svg class="ic" aria-hidden="true"><use href="#i-seta"/></svg>');
+      } else {
+        b.textContent = texto;
+      }
+      b.addEventListener('click', function () { acao(b); });
+      li.appendChild(b);
+      return li;
+    }
+    function desenhar() {
+      var v = campo.value.trim().replace(/\s+/g, ' ');
+      var itens = buscarTipos(v);
+      var exato = itens.some(function (t) { return semAcento(t[0]) === semAcento(v); });
+      lista.innerHTML = '';
+      // O que a pessoa digitou vira a primeira opção: a lista nunca some e nada pula na tela
+      if (v.length >= 2 && !exato) lista.appendChild(item('Continuar com “' + v + '”', 'criar', false, confirmar));
+      itens.slice(0, v ? 4 : 8).forEach(function (t) {
+        lista.appendChild(item(t[0], '', est.tipo && semAcento(est.tipo) === semAcento(t[0]), function (b) { escolher(t, b); }));
+      });
+    }
+    function concluirTipo() {
+      est.entrada = origem;
+      salvar();
+      marcar('entrada_' + origem);
+      perguntasTipo.forEach(function (p) { if (p.campo !== campo) { p.campo.value = est.tipo; p.desenhar(); } });
+      erro(erroId, '');
+      campo.blur();
+    }
+    function escolher(t, botao) {
+      marcarInicio();
+      campo.value = t[0];
+      est.tipo = t[0]; est.tipoG = t[1]; est.tipoOrigem = 'sugestao';
+      Array.prototype.forEach.call(lista.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-selected', c === botao ? 'true' : 'false'); });
+      concluirTipo();
+      setTimeout(function () { concluir(1); }, poucoMovimento ? 0 : 180);   // deixa ver a escolha marcada
+    }
+    function confirmar() {
+      var v = campo.value.trim().replace(/\s+/g, ' ');
+      if (v.length < 2) { erro(erroId, 'Me conta qual é o seu negócio.'); campo.focus(); return; }
+      var achado = null;
+      TIPOS.forEach(function (t) { if (semAcento(t[0]) === semAcento(v)) achado = t; });
+      est.tipo = achado ? achado[0] : v;
+      est.tipoG = achado ? achado[1] : '';
+      est.tipoOrigem = achado ? 'sugestao' : 'digitado';
+      concluirTipo();
+      concluir(1);
+    }
+    campo.addEventListener('focus', marcarInicio);
+    campo.addEventListener('input', function () {
+      marcarInicio();
+      if (est.tipo && semAcento(est.tipo) !== semAcento(campo.value)) { est.tipo = ''; est.tipoG = ''; salvar(); }
+      desenhar();
+      if (campo.value.trim().length >= 2) erro(erroId, '');
+    });
+    campo.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); confirmar(); } });
+    var p = { campo: campo, desenhar: desenhar };
+    perguntasTipo.push(p);
+    return p;
+  }
   function buscarTipos(q) {
     q = semAcento(q);
     if (!q) return POPULARES;
@@ -681,58 +786,14 @@ body.foco .fixo{display:none}
       if (n.indexOf(q) === 0 || n.split(/[\s-]+/).some(function (p) { return p.indexOf(q) === 0; })) comeca.push(t);
       else if (n.indexOf(q) > -1) contem.push(t);
     });
-    return comeca.concat(contem).slice(0, 5);
+    return comeca.concat(contem);
   }
-  function desenharChips(itens) {
-    listaTipos.innerHTML = '';
-    itens.forEach(function (t) {
-      var li = document.createElement('li');
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'chip';
-      b.textContent = t[0];
-      b.setAttribute('role', 'option');
-      b.setAttribute('aria-selected', est.tipo && semAcento(est.tipo) === semAcento(t[0]) ? 'true' : 'false');
-      b.addEventListener('click', function () { escolherTipo(t, b); });
-      li.appendChild(b);
-      listaTipos.appendChild(li);
-    });
-    listaTipos.hidden = !itens.length;
-  }
-  function escolherTipo(t, botao) {
-    marcarInicio();
-    campoTipo.value = t[0];
-    est.tipo = t[0]; est.tipoG = t[1]; est.tipoOrigem = 'sugestao';
-    salvar();
-    erro('tipo', '');
-    Array.prototype.forEach.call(listaTipos.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-selected', c === botao ? 'true' : 'false'); });
-    campoTipo.blur();
-    setTimeout(function () { concluir(1); }, poucoMovimento ? 0 : 180);   // deixa ver a escolha marcada
-  }
-  function confirmarTipoDigitado() {
-    var v = campoTipo.value.trim().replace(/\s+/g, ' ');
-    if (v.length < 2) { erro('tipo', 'Me conta qual é o seu negócio.'); campoTipo.focus(); return; }
-    var achado = null;
-    TIPOS.forEach(function (t) { if (semAcento(t[0]) === semAcento(v)) achado = t; });
-    est.tipo = achado ? achado[0] : v;
-    est.tipoG = achado ? achado[1] : '';
-    est.tipoOrigem = achado ? 'sugestao' : 'digitado';
-    salvar();
-    erro('tipo', '');
-    campoTipo.blur();
-    concluir(1);
-  }
-  campoTipo.addEventListener('focus', marcarInicio);
-  campoTipo.addEventListener('input', function () {
-    marcarInicio();
-    var v = campoTipo.value;
-    if (est.tipo && semAcento(est.tipo) !== semAcento(v)) { est.tipo = ''; est.tipoG = ''; salvar(); }
-    desenharChips(buscarTipos(v));
-    contTipo.hidden = v.trim().length < 2;
-    if (v.trim().length >= 2) erro('tipo', '');
-  });
-  campoTipo.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); confirmarTipoDigitado(); } });
-  contTipo.addEventListener('click', confirmarTipoDigitado);
+  var campoTipo = document.getElementById('tipo');
+  var campoTipoFinal = document.getElementById('tipo-final');
+  criarPerguntaTipo(campoTipo, document.getElementById('tipo-lista'), 'tipo', 'topo');
+  criarPerguntaTipo(campoTipoFinal, document.getElementById('tipo-lista-final'), 'tipo-final', 'final');
+  function desenharPerguntasTipo() { perguntasTipo.forEach(function (p) { p.desenhar(); }); }
+  function ehProfissional() { return est.tipoOrigem === 'sugestao' && est.tipo && !est.tipoG; }
 
   function fraseTipo() {
     if (!est.tipo || !est.tipoG) return 'do seu negócio';
@@ -742,6 +803,11 @@ body.foco .fixo{display:none}
   // ---------- Navegação entre telas
   function personalizar(n) {
     if (n === 2) document.getElementById('q2-titulo').textContent = 'O que você mais quer que o site ' + fraseTipo() + ' faça?';
+    if (n === 3) {
+      document.getElementById('q3-titulo').textContent = ehProfissional() ? 'Qual nome vai no topo do seu site?' : 'Como se chama o seu negócio?';
+      document.getElementById('nome-negocio').placeholder = ehProfissional() ? 'ex.: Dra. Ana Lima' : 'ex.: Barbearia do Zé';
+      document.getElementById('q3-dica').textContent = ehProfissional() ? 'Pode ser o seu próprio nome.' : 'Vai no topo do seu site. Trabalha com o seu próprio nome? Pode colocar ele.';
+    }
     if (n === 4) document.getElementById('q4-titulo').textContent = est.nomeNegocio ? 'Qual é o Instagram de ' + est.nomeNegocio + '?' : 'Qual é o Instagram do seu negócio?';
   }
   function focarTela(n) {
@@ -758,10 +824,12 @@ body.foco .fixo{display:none}
       entrada.hidden = false;
       telaAtual = 1;
       est.etapa = 1; salvar();
-      desenharChips(buscarTipos(est.tipoOrigem === 'digitado' ? campoTipo.value : ''));
-      contTipo.hidden = campoTipo.value.trim().length < 2;
+      desenharPerguntasTipo();
       atualizarFixo();
-      cartao.scrollIntoView({ block: 'start' });
+      var raiz = document.documentElement;
+      raiz.style.scrollBehavior = 'auto';   // salto imediato, sem a rolagem suave da página
+      (est.entrada === 'final' ? document.getElementById('cartao-final') : cartao).scrollIntoView({ block: 'start' });
+      raiz.style.scrollBehavior = '';
       return;
     }
     var vinhaDaEntrada = telaAtual === 1;
@@ -857,6 +925,8 @@ body.foco .fixo{display:none}
   function confirmarNomeNegocio() {
     var v = campoNomeNegocio.value.trim().replace(/\s+/g, ' ');
     if (v.length < 2) { erro('nome-negocio', 'Coloca o nome do seu negócio.'); campoNomeNegocio.focus(); return; }
+    var digitos = v.replace(/\D/g, '').length;
+    if (digitos >= 6 && digitos >= v.replace(/\s/g, '').length / 2) { erro('nome-negocio', ehProfissional() ? 'Aqui é o nome que vai no site. O WhatsApp eu peço no final.' : 'Aqui é o nome do negócio. O WhatsApp eu peço no final.'); campoNomeNegocio.focus(); return; }
     erro('nome-negocio', '');
     est.nomeNegocio = v;
     salvar();
@@ -969,7 +1039,8 @@ body.foco .fixo{display:none}
     var negocio = est.nomeNegocio || 'o meu negócio';
     var tipo = est.tipo ? ' (' + est.tipo.toLowerCase() + ')' : '';
     var objetivo = OBJETIVO_FRASE[est.objetivoChave] || (est.objetivo ? 'o que eu mais quero é: ' + est.objetivo.replace(/[.!]+$/, '') : '');
-    return 'Oi, Anderson! Sou ' + nome + ' e acabei de responder lá no site. Meu negócio se chama ' + negocio + tipo +
+    var apresentacao = ehProfissional() ? 'O nome que vai no site é ' : 'Meu negócio se chama ';
+    return 'Oi, Anderson! Sou ' + nome + ' e acabei de responder lá no site. ' + apresentacao + negocio + tipo +
       (objetivo ? ' e ' + objetivo : '') + '.';
   }
   function mostrarPronto(ok, op) {
@@ -1039,7 +1110,8 @@ body.foco .fixo{display:none}
         tipo: est.tipo || '',
         tipo_origem: est.tipoOrigem || '',
         objetivo: est.objetivo || '',
-        logo: est.logo || ''
+        logo: est.logo || '',
+        entrada: est.entrada || 'topo'
       }
     };
 
@@ -1068,12 +1140,25 @@ body.foco .fixo{display:none}
     });
   });
 
+  // ---------- Seta do puxador: pula enquanto ninguém rolou, endireita quando a pessoa rola
+  var folha = document.querySelector(".folha");
+  function marcarRolagem() { folha.classList.toggle("rolou", window.scrollY > 40); }
+  window.addEventListener("scroll", marcarRolagem, { passive: true });
+  marcarRolagem();
+
   // ---------- Botão fixo do celular e chamadas para o quiz
   var fixo = document.getElementById('fixo');
   var cartaoNaTela = true;
   function atualizarFixo() { fixo.classList.toggle('escondido', cartaoNaTela || telaAtual !== 1); }
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { cartaoNaTela = es[0].isIntersecting; atualizarFixo(); }, { threshold: 0.15 }).observe(cartao);
+    var visiveis = {};
+    var obs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { visiveis[e.target.id] = e.isIntersecting; });
+      cartaoNaTela = Object.keys(visiveis).some(function (k) { return visiveis[k]; });
+      atualizarFixo();
+    }, { threshold: 0.15 });
+    obs.observe(cartao);
+    obs.observe(document.getElementById('cartao-final'));
   }
   function irAoQuiz(ev) {
     ev.preventDefault();
@@ -1098,8 +1183,9 @@ body.foco .fixo{display:none}
     }
   }
   restaurarCampos();
-  desenharChips(buscarTipos(est.tipoOrigem === 'digitado' ? campoTipo.value : ''));
-  contTipo.hidden = campoTipo.value.trim().length < 2;
+  if (est.tipo) campoTipoFinal.value = est.tipo;
+  desenharPerguntasTipo();
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';   // quem volta cai na pergunta que usou, não onde o navegador lembrava
   history.replaceState({ quiz: 1 }, '');
   if (est.enviado && est.nome) {
     lead = { event_id: est.eventId, nome: est.nome, enviado: true };
