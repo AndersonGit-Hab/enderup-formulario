@@ -134,7 +134,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .inicio .barra{position:relative}
 .inicio-palco{display:grid;gap:20px;max-width:600px;margin:0 auto;padding:20px 16px 50px}
 .inicio .t1{font-size:clamp(2.15rem,1.3rem + 4.2vw,4.25rem);line-height:.94}
-.inicio .t1 .d{background:none;padding:0;color:var(--ambar-texto)}
+.inicio .t1 .d{background:none;padding:0;color:inherit}
 .inicio .lead{margin-top:10px;font-size:15px}
 /* Cartão da pergunta 1: branco, com sombra e faixa âmbar, para ser o foco da tela */
 .cartao-pergunta{display:grid;gap:12px;text-align:left;background:#fff;border-radius:22px;border-top:4px solid var(--ambar);padding:16px 16px 18px;box-shadow:0 1px 0 rgba(11,11,13,.05),0 24px 48px -26px rgba(11,11,13,.55)}
@@ -269,7 +269,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .duvida[open] .sinal::after{transform:scaleY(0)}
 .duvida p{padding:0 16px 18px;color:var(--suave);font-size:15px;line-height:1.6}
 .folha{position:relative;z-index:1;margin-top:-26px;border-radius:28px 28px 0 0;padding-top:12px}
-.folha::before{content:"";display:block;width:42px;height:5px;border-radius:5px;background:rgba(244,241,234,.38);margin:0 auto 20px}
+.puxador{display:flex;justify-content:center;width:52px;height:16px;margin:0 auto 18px;animation:pula 1.5s ease-in-out infinite}
+.puxador i{width:28px;height:5px;border-radius:5px;background:var(--ambar);transition:transform .45s var(--curva),background .45s}
+.puxador i:first-child{transform-origin:100% 50%;transform:rotate(24deg)}
+.puxador i:last-child{margin-left:-5px;transform-origin:0 50%;transform:rotate(-24deg)}
+.rolou .puxador{animation:none}
+.rolou .puxador i{transform:none;background:rgba(244,241,234,.38)}
+@keyframes pula{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.puxador{animation:none}}
 .chamada{text-align:center;display:grid;justify-items:center;gap:16px}
 .chamada .botao{max-width:420px}
 @media (min-width:600px){.celulares{gap:20px;max-width:640px}.celular{border-radius:22px;border-width:4px}.legenda{font-size:12px}}
@@ -354,6 +361,7 @@ body.foco .fixo{display:none}
 
 <main>
   <section class="painel escuro secao folha" aria-labelledby="t-como">
+    <span class="puxador" aria-hidden="true"><i></i><i></i></span>
     <p class="etiqueta"><i class="q"></i>Como funciona</p>
     <h2 class="t2" id="t-como">Eu monto primeiro. <span class="d">Você decide depois.</span></h2>
     <ol class="passos">
@@ -1123,6 +1131,12 @@ body.foco .fixo{display:none}
       clearTimeout(limite);
     });
   });
+
+  // ---------- Seta do puxador: pula enquanto ninguém rolou, endireita quando a pessoa rola
+  var folha = document.querySelector(".folha");
+  function marcarRolagem() { folha.classList.toggle("rolou", window.scrollY > 40); }
+  window.addEventListener("scroll", marcarRolagem, { passive: true });
+  marcarRolagem();
 
   // ---------- Botão fixo do celular e chamadas para o quiz
   var fixo = document.getElementById('fixo');
