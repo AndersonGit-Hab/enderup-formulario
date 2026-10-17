@@ -134,7 +134,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .inicio .barra{position:relative}
 .inicio-palco{display:grid;gap:20px;max-width:600px;margin:0 auto;padding:20px 16px 50px}
 .inicio .t1{font-size:clamp(2.15rem,1.3rem + 4.2vw,4.25rem);line-height:.94}
-.inicio .t1 .d{background:none;padding:0;color:inherit}
+.inicio .t1 .d{background:none;padding:0;color:var(--ambar)}
 .inicio .lead{margin-top:10px;font-size:15px}
 /* Cartão da pergunta 1: branco, com sombra e faixa âmbar, para ser o foco da tela */
 .cartao-pergunta{display:grid;gap:12px;text-align:left;background:#fff;border-radius:22px;border-top:4px solid var(--ambar);padding:16px 16px 18px;box-shadow:0 1px 0 rgba(11,11,13,.05),0 24px 48px -26px rgba(11,11,13,.55)}
@@ -269,12 +269,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .duvida[open] .sinal::after{transform:scaleY(0)}
 .duvida p{padding:0 16px 18px;color:var(--suave);font-size:15px;line-height:1.6}
 .folha{position:relative;z-index:1;margin-top:-26px;border-radius:28px 28px 0 0;padding-top:12px}
-.puxador{display:flex;justify-content:center;width:52px;height:16px;margin:0 auto 18px;animation:pula 1.5s ease-in-out infinite}
-.puxador i{width:28px;height:5px;border-radius:5px;background:var(--ambar);transition:transform .45s var(--curva),background .45s}
-.puxador i:first-child{transform-origin:100% 50%;transform:rotate(24deg)}
-.puxador i:last-child{margin-left:-5px;transform-origin:0 50%;transform:rotate(-24deg)}
+/* Duas barras de cor sólida que giram em torno do MESMO ponto (centro da ponta arredondada): junção sem emenda */
+.puxador{position:relative;display:block;width:56px;height:16px;margin:0 auto 18px;animation:pula 1.5s ease-in-out infinite}
+.puxador i{position:absolute;top:5px;width:28px;height:5px;border-radius:2.5px;background:var(--ambar);transition:transform .45s var(--curva),background .45s}
+.puxador i:first-child{left:2.5px;transform-origin:25.5px 2.5px;transform:rotate(24deg)}
+.puxador i:last-child{left:25.5px;transform-origin:2.5px 2.5px;transform:rotate(-24deg)}
 .rolou .puxador{animation:none}
-.rolou .puxador i{transform:none;background:rgba(244,241,234,.38)}
+.rolou .puxador i{transform:none;background:#676662}
 @keyframes pula{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 @media (prefers-reduced-motion:reduce){.puxador{animation:none}}
 .chamada{text-align:center;display:grid;justify-items:center;gap:16px}
