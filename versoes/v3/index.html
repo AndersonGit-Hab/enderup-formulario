@@ -125,19 +125,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 /* ---------- Entrada ---------- */
 .logo{height:21px;width:auto;aspect-ratio:479.4/93.2}
 /* A primeira tela é a pergunta 1, com a mesma cara das outras etapas */
-.inicio{color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);scroll-margin-top:0;
+/* Primeira tela escura (como a página de referência): o âmbar do título tem contraste e o cartão branco salta */
+.inicio{color:var(--claro);--suave:#8F8B83;--linha:rgba(244,241,234,.09);scroll-margin-top:0;
   background:
-    linear-gradient(rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
-    linear-gradient(90deg,rgba(11,11,13,.045) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
-    radial-gradient(90% 40% at 100% 100%,rgba(245,184,61,.12),transparent 70%),
-    var(--creme)}
+    linear-gradient(rgba(244,241,234,.035) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    linear-gradient(90deg,rgba(244,241,234,.035) 1px,transparent 1px) 50% 0/var(--grade) var(--grade),
+    radial-gradient(90% 55% at 100% 0%,rgba(245,184,61,.14),transparent 62%),
+    radial-gradient(80% 45% at 0% 100%,rgba(196,92,18,.24),transparent 66%),
+    var(--painel)}
 .inicio .barra{position:relative}
 .inicio-palco{display:grid;gap:20px;max-width:600px;margin:0 auto;padding:20px 16px 50px}
 .inicio .t1{font-size:clamp(2.15rem,1.3rem + 4.2vw,4.25rem);line-height:.94}
 .inicio .t1 .d{background:none;padding:0;color:var(--ambar)}
 .inicio .lead{margin-top:10px;font-size:15px}
 /* Cartão da pergunta 1: branco, com sombra e faixa âmbar, para ser o foco da tela */
-.cartao-pergunta{display:grid;gap:12px;text-align:left;background:#fff;border-radius:22px;border-top:4px solid var(--ambar);padding:16px 16px 18px;box-shadow:0 1px 0 rgba(11,11,13,.05),0 24px 48px -26px rgba(11,11,13,.55)}
+.cartao-pergunta{color:var(--escuro);--suave:#5E5A52;--linha:rgba(11,11,13,.11);display:grid;gap:12px;text-align:left;background:#fff;border-radius:22px;border-top:4px solid var(--ambar);padding:16px 16px 18px;box-shadow:0 1px 0 rgba(11,11,13,.05),0 24px 48px -26px rgba(11,11,13,.55)}
 .cartao-topo{display:flex;align-items:center;gap:10px}
 .num{width:28px;height:28px;border-radius:50%;background:var(--escuro);color:var(--ambar);display:grid;place-items:center;font:700 13px/1 var(--inter);flex:none}
 .cartao-pergunta .q-titulo{font-size:23px}
@@ -241,6 +243,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 /* ---------- Seções para quem rola a página ---------- */
 .porque-lista{display:grid;gap:10px;margin-top:22px}
 .porque-lista li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center;padding:14px;border-radius:18px;background:#fff;border:1px solid var(--linha);font-size:15.5px;line-height:1.45}
+.escuro .porque-lista li{background:rgba(244,241,234,.04)}
 .ic-caixa{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(245,184,61,.16);color:var(--ambar-texto)}
 .ic-caixa .ic{width:22px;height:22px}
 .escuro .ic-caixa{color:var(--ambar)}
@@ -248,6 +251,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .passos li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:baseline;padding:15px 0;border-bottom:1px solid var(--linha);font-size:16px;line-height:1.45}
 .passos li:first-child{border-top:1px solid var(--linha)}
 .passos .n{font:500 13px/1.45 var(--inter);color:var(--ambar)}
+.creme .passos .n{color:var(--ambar-texto)}
 .celulares{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px}
 .celular{border-radius:16px;border:3px solid #1B1B1F;background:#1B1B1F;overflow:hidden;box-shadow:0 18px 36px -16px rgba(11,11,13,.55)}
 .celular img{width:100%;aspect-ratio:300/649;object-fit:cover;object-position:top}
@@ -275,7 +279,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webki
 .puxador i:first-child{left:2.5px;transform-origin:25.5px 2.5px;transform:rotate(24deg)}
 .puxador i:last-child{left:25.5px;transform-origin:2.5px 2.5px;transform:rotate(-24deg)}
 .rolou .puxador{animation:none}
+.creme .puxador i{background:var(--ambar-fundo)}
 .rolou .puxador i{transform:none;background:#676662}
+.creme.rolou .puxador i{background:#B9B4AA}
 @keyframes pula{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 @media (prefers-reduced-motion:reduce){.puxador{animation:none}}
 .chamada{text-align:center;display:grid;justify-items:center;gap:16px}
@@ -361,7 +367,7 @@ body.foco .fixo{display:none}
 </header>
 
 <main>
-  <section class="painel escuro secao folha" aria-labelledby="t-como">
+  <section class="painel creme secao folha" aria-labelledby="t-como">
     <span class="puxador" aria-hidden="true"><i></i><i></i></span>
     <p class="etiqueta"><i class="q"></i>Como funciona</p>
     <h2 class="t2" id="t-como">Eu monto primeiro. <span class="d">Você decide depois.</span></h2>
@@ -372,7 +378,7 @@ body.foco .fixo{display:none}
     </ol>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-porque">
+  <section class="painel escuro secao" aria-labelledby="t-porque">
     <p class="etiqueta"><i class="q"></i>Só o Instagram basta?</p>
     <h2 class="t2" id="t-porque">O Instagram traz a pessoa. <span class="d">O site faz ela chamar.</span></h2>
     <ul class="porque-lista">
@@ -382,7 +388,7 @@ body.foco .fixo{display:none}
     </ul>
   </section>
 
-  <section class="painel escuro secao vitrine" aria-labelledby="t-sites">
+  <section class="painel creme secao vitrine" aria-labelledby="t-sites">
     <p class="etiqueta"><i class="q"></i>Exemplos reais</p>
     <h2 class="t2" id="t-sites">Sites que eu <span class="d">já fiz</span></h2>
     <ul class="celulares">
@@ -401,7 +407,7 @@ body.foco .fixo{display:none}
     </ul>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-quem">
+  <section class="painel escuro secao" aria-labelledby="t-quem">
     <p class="etiqueta"><i class="q"></i>Quem faz o seu site</p>
     <div class="quem">
       <img src="/assets/img/anderson-trabalhando.webp" srcset="/assets/img/anderson-trabalhando-560.webp 560w, /assets/img/anderson-trabalhando.webp 960w" sizes="(min-width:900px) 560px, calc(100vw - 32px)" width="960" height="720" loading="lazy" decoding="async" alt="Anderson Ananias trabalhando no computador">
@@ -412,7 +418,7 @@ body.foco .fixo{display:none}
     </div>
   </section>
 
-  <section class="painel escuro secao" aria-labelledby="t-duvidas">
+  <section class="painel creme secao" aria-labelledby="t-duvidas">
     <p class="etiqueta"><i class="q"></i>Dúvidas</p>
     <h2 class="t2" id="t-duvidas">O que você precisa <span class="d">saber antes</span></h2>
     <div class="perguntas">
@@ -423,7 +429,7 @@ body.foco .fixo{display:none}
     </div>
   </section>
 
-  <section class="painel creme secao" aria-labelledby="t-final">
+  <section class="painel escuro secao" aria-labelledby="t-final">
     <div class="chamada">
       <h2 class="t2" id="t-final">Me conta 5 coisas sobre <span class="d">o seu negócio.</span></h2>
       <p class="nota">Leva menos de 1 minuto.</p>
